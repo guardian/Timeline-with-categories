@@ -2,11 +2,10 @@
 <html lang="en">
 	<head>
 		<title>Timeline | The Guardian</title>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="css/timeline.css" />
 		<script src="js/modernizr.custom.js"></script>
 		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
 
 		<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
@@ -19,38 +18,19 @@
 		<div id="timeline" class="timeline-container">
 		
 			<!--<div id="manusLeadImage"><span id="manusImageText"><i>A customs vessel hails an asylum seeker boat</i></span></div>-->
-			<nav id="nav" class="navbar navbar-default" role="navigation">
-				<div class="navbar-header">
-					 <ul class="nav navbar-nav">
-					 <span class="key-header">Incident category</span>
-					 <li class="key distress_call"><span class="catMarker"></span><span class="catText">Distress call</span> </li>
-					 <li class="key boat_interception"><span class="catMarker"></span><span class="catText">Boat intercepted</span></li>
-					 <li class="key turnback"><span class="catMarker"></span><span class="catText">Turnback</span></li>
-					 <li class="key boat_arrival"><span class="catMarker"></span><span class="catText">Boat arrival</span></li>	
-					 <li class="key">|</li>
-				     <li class="dropdown">
-				        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Filter <b class="caret"></b></a>
-				        <ul class="dropdown-menu">
-				          <li><a href="#" id="turnbackFilter">Turnbacks</a></li>
-				          <li><a href="#" id="distressFilter">Distress calls</a></li>
-				          <li><a href="#" id="arrivalFilter">Boat arrivals</a></li>
-				          <li><a href="#" id="interceptionFilter">Boat interceptions</a></li>
-				          <li class="divider"></li>
-				          <li><a href="#" id="showallFilter">Show all</a></li>
-				        </ul>
-				      </li>
-				      <li class="key">|</li>
-				      <li><a href="#" id="gotoTop">Go to top</a></li>
-				      <li class="key">|</li>
-				      <li><a href="#" id="expandAll">Expand all</a></li>
-				     
-
-				    </ul> 
-				</div>
 			
-	
+		<div id="nav" class="navbar">	
+			<div class="nav-categories">
+					<ul>
+					<li class="current">Categories</li>
+			          <li><a href="#" id="turnbackFilter">Turnbacks</a></li>
+			          <li><a href="#" id="distressFilter">Distress calls</a></li>
+			          <li><a href="#" id="arrivalFilter">Boat arrivals</a></li>
+			          <li><a href="#" id="interceptionFilter">Boat interceptions</a></li>
+				    </ul>    
+			</div>
+		</div>	
 
-			</nav>		
 			<div class="timeline-main">
 	 
 				<ul class="cbp_tmtimeline" id="timeline-list">
@@ -130,10 +110,6 @@
 				manusParseURL();
 
 				});
-
-				$('#nav').affix({
-			        offset: { top: $('#nav').offset().top }
-			    });
 	
 
 				$("#turnbackFilter").click(function() {
@@ -212,8 +188,26 @@
 
 				}
 
-			
+ 
+				var stickyNavTop = $('#nav').offset().top;  
+				  
+				var stickyNav = function(){  
+				var scrollTop = $(window).scrollTop();  
+				       
+				if (scrollTop > stickyNavTop) {   
+				    $('#nav').addClass('sticky');  
+				} else {  
+				    $('#nav').removeClass('sticky');   
+				}  
+				};  
+				  
+				stickyNav();  
+				  
+				$(window).scroll(function() {  
+				    stickyNav();  
+				});  
 
+			
 
 				}
 
