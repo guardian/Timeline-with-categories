@@ -8,12 +8,17 @@
 		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
+		<!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
 	</head>
 	<body>
 		
-		<div id="manus" class="gia-container">
+		<div id="timeline" class="timeline-container">
 		
-			<div id="manusLeadImage"><span id="manusImageText"><i>A customs vessel hails an asylum seeker boat</i></span></div>
+			<!--<div id="manusLeadImage"><span id="manusImageText"><i>A customs vessel hails an asylum seeker boat</i></span></div>-->
 			<nav id="nav" class="navbar navbar-default" role="navigation">
 				<div class="navbar-header">
 					 <ul class="nav navbar-nav">
@@ -46,9 +51,9 @@
 	
 
 			</nav>		
-			<div class="gia-main">
+			<div class="timeline-main">
 	 
-				<ul class="cbp_tmtimeline" id="timeline">
+				<ul class="cbp_tmtimeline" id="timeline-list">
 
 				</ul>
 			</div>
@@ -81,7 +86,7 @@
 					var fbText = data[i]['title'] + " - Operation Sovereign borders incident number " + (i + 1);
 					var facebook = 'http://www.facebook.com/sharer.php?s=100&p[title]=Operation%20Sovereign%20Borders%20incidents&p[summary]=' + fbText + '&p[url]=' + link + '&p[images][0]=http://interactive.guim.co.uk/australia/2014/june/osb-timeline/img/customs.jpg';
 
-					$('#timeline').append('<li class="incident ' + data[i]['incident-category'] + '" id="manus' + (i + 1) + '"><time class="cbp_tmtime" datetime="' + data[i]['date'] + '"><span>' + data[i]['date'] + '</span><span>' + '</time>' + '<div class="cbp_tmicon cbp_tmicon-phone"></div><div class="cbp_tmlabel"><span class="manusupdate">' + data[i]['updated'] + '</span><h2 data-incident="manus' + (i + 1) + '">' + data[i]['title'] + '</h2><div class="details"><p>' + data[i]['text'] + '</p><p>' + '<span class="update">source: ' + '<a href="' + data[i]['link'] + '" target="_blank">' + data[i]['source'] + '</a></span></p><span class="manusShareLinks">Share this incident: <a href="' + link + '" target="_blank">link</a> | <a href="' + tweet + '" target="_blank">twitter</a> | <a href="' + facebook + '" target="_blank">facebook</a></span></div></div></li>')
+					$('#timeline-list').append('<li class="incident ' + data[i]['incident-category'] + '" id="manus' + (i + 1) + '"><time class="cbp_tmtime" datetime="' + data[i]['date'] + '"><span>' + data[i]['date'] + '</span><span>' + '</time>' + '<div class="cbp_tmicon cbp_tmicon-phone"></div><div class="cbp_tmlabel"><span class="manusupdate">' + data[i]['updated'] + '</span><h2 data-incident="manus' + (i + 1) + '">' + data[i]['title'] + '</h2><div class="details"><p>' + data[i]['text'] + '</p><p>' + '<span class="update">source: ' + '<a href="' + data[i]['link'] + '" target="_blank">' + data[i]['source'] + '</a></span></p><span class="manusShareLinks">Share this incident: <a href="' + link + '" target="_blank">link</a> | <a href="' + tweet + '" target="_blank">twitter</a> | <a href="' + facebook + '" target="_blank">facebook</a></span></div></div></li>')
 
 				}
 
