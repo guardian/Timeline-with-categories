@@ -278,6 +278,7 @@ top: 10px;
 border-right-color: #F2F2F2;
 }
 
+
 .cbp_tmtimeline > li .cbp_tmicon {
 width: 40px;
 height: 40px;
@@ -399,13 +400,13 @@ background-position:right;
 		right: auto;
 		left: 20px;
 		border-right-color: transparent;
-		border-bottom-color: #3594cb;
+		border-bottom-color: #F2F2F2;
 		top: -20px;
 	}
 
 	.cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel:after {
 		border-right-color: transparent;
-		border-bottom-color: #6cbfee;
+		border-bottom-color: #F2F2F2;
 	}
 
 	.cbp_tmtimeline > li .cbp_tmicon {
@@ -431,7 +432,6 @@ background-position:right;
 	margin-top:-15px;
 	}	
 }
-
 
 #timeline  p {
 
