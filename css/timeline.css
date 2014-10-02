@@ -183,7 +183,17 @@ left: 20%;
 margin-left: -10px;
 }
 
+.cbp_tmtimeline:last-child:after {
 
+	position: absolute;
+	content: '';
+	width:46px;
+	height:10px;
+	background: #000;
+	left:20%;
+	margin-left:-28px;
+	margin-top:-15px;
+}
 
 .cbp_tmtimeline > li .cbp_tmtime {
 display: block;
@@ -406,6 +416,19 @@ background-position:right;
 		height: 25px;
 		box-shadow: 0 0 0 4px #000;
 		margin: -40px 5px 0 0px;
+	}
+
+
+	.cbp_tmtimeline:last-child:after {
+
+	position: absolute;
+	content: '';
+	width:46px;
+	height:10px;
+	background:none;
+	left:20%;
+	margin-left:-28px;
+	margin-top:-15px;
 	}	
 }
 
