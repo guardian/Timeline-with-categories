@@ -2,7 +2,6 @@ body {
 	margin:0;
 }
 
-
 *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
 .clearfix:before, .clearfix:after { content: " "; display: table; }
@@ -39,6 +38,39 @@ font-weight: bold;
 margin-bottom: 5px;
 }
 
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-plus:before {
+  content: "\2b";
+}
+
+.glyphicon-minus:before {
+  content: "\2212";
+}
+
+.glyphicon-minus-sign:before {
+  content: "\e082";
+}
+
+.glyphicon-plus-sign:before {
+  content: "\e081";
+}
+
 /* NavBar */
 
 
@@ -47,6 +79,10 @@ margin-bottom: 5px;
 	box-shadow: -3px 2px 5px #888888;
 	z-index: 100;
 	padding:10px 0; 
+}
+
+.nav-categories {
+	float:left; 
 }
 
 .nav-categories ul {
@@ -66,6 +102,18 @@ margin-bottom: 5px;
 	text-decoration: none;
 	color: #999;
 	line-height: 100%;
+}
+
+#nav-buttons {
+	float:right;
+	margin-right:40px; 
+}
+
+#nav-buttons span {
+
+	color:#999;
+	font-size:30px;
+	font-weight:bold; 
 }
 
 .nav-categories a:before {
@@ -93,7 +141,6 @@ margin-bottom: 5px;
 	border-radius: 5px;
 }
 
-
 .sticky {  
     position: fixed;  
     width: 100%;  
@@ -105,9 +152,10 @@ margin-bottom: 5px;
 
 .nav-categories li.current {
 
-		padding: 2px 2px 2px 32px;
+	padding: 2px 2px 2px 32px;
 
 	}
+
 
 @media screen and (max-width: 600px) {
 

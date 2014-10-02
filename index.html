@@ -17,19 +17,23 @@
 	<body>
 		
 		<div id="timeline" class="timeline-container">
-		
-			<!--<div id="manusLeadImage"><span id="manusImageText"><i>A customs vessel hails an asylum seeker boat</i></span></div>-->
 			
 		<div id="nav" class="navbar">	
 			<div class="nav-categories">
-					<ul id="category-menu">
+					<ul id="category-menu" class="clearfix">
 						<li class="current">Categories</li>
 				        <li class="category"><a href="#" id="turnbackFilter">Turnbacks</a></li>
 				        <li class="category"><a href="#" id="distressFilter">Distress calls</a></li>
 				        <li class="category"><a href="#" id="arrivalFilter">Boat arrivals</a></li>
 				        <li class="category"><a href="#" id="interceptionFilter">Boat interceptions</a></li>
-				    </ul>    
+				        <li class="category"><a href="#" id="showallFilter">Show all</a></li>
+				    </ul>
+
 			</div>
+			<div id="nav-buttons">
+				<span class="glyphicon glyphicon-plus-sign" id="expandAll" title="Expand or minimise all"></span>
+			</div>	 
+			<div class="clearfix"></div>
 		</div>	
 
 			<div class="timeline-main">
@@ -44,8 +48,7 @@
 
 		var gia=(function(gia,$){
 
-			
-
+		
 			gia.init = function(){
 
 				var expanded = "no";
@@ -152,7 +155,9 @@
 
 					if (expanded == "no") {
 					$(".details").slideDown();
-					$("#expandAll").html("Minimise all");
+					$("#expandAll").removeClass("glyphicon-plus-sign");
+					$("#expandAll").addClass("glyphicon-minus-sign");
+
 					expanded = "yes";
 					$("#manus h2").css("background-image", "url(http://interactive.guim.co.uk/australia/2013/december/manusincidents/img/up.png)"); 
 
@@ -160,7 +165,8 @@
 
 					else if (expanded == "yes") {
 						$(".details").slideUp();
-						$("#expandAll").html("Expand all");
+						$("#expandAll").addClass("glyphicon-plus-sign");
+						$("#expandAll").removeClass("glyphicon-minus-sign");
 						expanded = "no";
 						$("#manus h2").css("background-image", "url(http://interactive.guim.co.uk/australia/2013/december/manusincidents/img/down.png)"); 
 
@@ -204,7 +210,7 @@
 				});  
 
 			
-				$("#category-menu").click(function(){
+				$(".current").click(function(){
 
 					getW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
