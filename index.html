@@ -2,6 +2,7 @@
 <html lang="en">
 	<head>
 		<title>Timeline | The Guardian</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		<link rel="stylesheet" type="text/css" href="css/timeline.css" />
 		<script src="js/modernizr.custom.js"></script>
 		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
@@ -21,12 +22,12 @@
 			
 		<div id="nav" class="navbar">	
 			<div class="nav-categories">
-					<ul>
-					<li class="current">Categories</li>
-			          <li><a href="#" id="turnbackFilter">Turnbacks</a></li>
-			          <li><a href="#" id="distressFilter">Distress calls</a></li>
-			          <li><a href="#" id="arrivalFilter">Boat arrivals</a></li>
-			          <li><a href="#" id="interceptionFilter">Boat interceptions</a></li>
+					<ul id="category-menu">
+						<li class="current">Categories</li>
+				        <li class="category"><a href="#" id="turnbackFilter">Turnbacks</a></li>
+				        <li class="category"><a href="#" id="distressFilter">Distress calls</a></li>
+				        <li class="category"><a href="#" id="arrivalFilter">Boat arrivals</a></li>
+				        <li class="category"><a href="#" id="interceptionFilter">Boat interceptions</a></li>
 				    </ul>    
 			</div>
 		</div>	
@@ -140,11 +141,6 @@
 		  			$("#timeline .distress_call").fadeOut();
 				});
 
-
-				setTimeout(function(){
-						$(".abbrevPopover").popover({placement:'top', trigger:'hover'});	
-					}, 1000);	
-
 				console.log($('.abbrevPopover'));
 
 				$("#showallFilter").click(function() {
@@ -208,6 +204,60 @@
 				});  
 
 			
+				$("#category-menu").click(function(){
+
+					getW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+					if ($(".category").is(':visible')) {
+						$(".category").hide();
+					}
+
+					else if ($(".category").is(':hidden')) {
+						$(".category").show();
+						if (getW > 601) {
+
+						$(".nav-categories li").css("display", "inline-block");
+						
+						}
+					}
+					
+					
+				});
+
+
+				if( !/iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+
+				$(window).resize(function() {
+
+				getW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+				if (getW > 601) {
+
+					if ($(".category").is(':hidden')) {
+						$(".category").show();
+						$(".nav-categories li").css("display", "inline-block");
+					}
+				 
+				}
+
+
+				if (getW < 600) {
+
+					$(".nav-categories li").css("display", "block");
+
+					if ($(".category").is(':visible')) {
+						$(".category").hide();
+						
+					}
+
+				}
+
+				});
+
+
+				}
+
+	
 
 				}
 
