@@ -106,7 +106,8 @@ margin-bottom: 5px;
 
 #nav-buttons {
 	float:right;
-	margin-right:40px; 
+	margin-right:40px;
+	cursor:pointer; 
 }
 
 #nav-buttons span {

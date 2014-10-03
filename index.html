@@ -22,11 +22,13 @@
 			<div class="nav-categories">
 					<ul id="category-menu" class="clearfix">
 						<li class="current">Categories</li>
-				        <li class="category"><a href="#" id="turnbackFilter">Turnbacks</a></li>
-				        <li class="category"><a href="#" id="distressFilter">Distress calls</a></li>
-				        <li class="category"><a href="#" id="arrivalFilter">Boat arrivals</a></li>
-				        <li class="category"><a href="#" id="interceptionFilter">Boat interceptions</a></li>
-				        <li class="category"><a href="#" id="showallFilter">Show all</a></li>
+				        <li class="category"><a href="#" id="majoreventFilter" data-cat="major-event">Major event</a></li>
+				        <li class="category"><a href="#" id="governmentannouncementFilter" data-cat="government-announcement">Government announcement</a></li>
+				        <li class="category"><a href="#" id="oppositionannouncementFilter" data-cat="opposition-announcement">Opposition announcement</a></li>
+				        <li class="category"><a href="#" id="legislationFilter" data-cat="legislation">Legislation</a></li>
+				        <li class="category"><a href="#" id="politicianannouncementFilter" data-cat="politician-announcement">Politician announcement</a></li>
+				        <li class="category"><a href="#" id="mediaFilter" data-cat="media">Media incident</a></li>
+				        <li class="category"><a href="#" id="showallFilter" data-cat="showall">Show all</a></li>
 				    </ul>
 
 			</div>
@@ -54,7 +56,7 @@
 				var expanded = "no";
 
 				$.ajax({
-				    url: 'data/osb-incidents.json',
+				    url: 'data/natsec.json',
 				    dataType: 'jsonp',
 				    jsonp: false,
 				    jsonpCallback: 'content'
@@ -114,7 +116,39 @@
 				manusParseURL();
 
 				});
-	
+
+				var catList = ['media','government-announcement','opposition-announcement','major-event','legislation','politician-announcement']
+
+				$(".category a").click(function() {
+
+					var catID = $(this).data('cat');
+					console.log(catID);
+					
+					if (catID != 'showall') {
+
+						catList.forEach(function(cat) {
+						if (cat != catID) {
+
+							$("#timeline ." + cat).fadeOut();
+						}
+						});
+
+						$("#timeline ." + catID).fadeIn();
+					} 
+
+					else if (catID === 'showall') {
+
+						catList.forEach(function(cat) {
+							$("#timeline ." + cat).fadeIn();
+						});
+
+
+					}
+									
+
+				});
+				
+
 
 				$("#turnbackFilter").click(function() {
 					$("#timeline .turnback").fadeIn();
