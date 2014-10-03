@@ -7,11 +7,10 @@
 		<script src="js/modernizr.custom.js"></script>
 		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 
-
 		<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+		<![endif]-->
 
 	</head>
 	<body>
@@ -22,12 +21,11 @@
 			<div class="nav-categories">
 					<ul id="category-menu" class="clearfix">
 						<li class="current">Categories</li>
-				        <li class="category"><a href="#" id="majoreventFilter" data-cat="major-event">Major event</a></li>
-				        <li class="category"><a href="#" id="governmentannouncementFilter" data-cat="government-announcement">Government announcement</a></li>
-				        <li class="category"><a href="#" id="oppositionannouncementFilter" data-cat="opposition-announcement">Opposition announcement</a></li>
-				        <li class="category"><a href="#" id="legislationFilter" data-cat="legislation">Legislation</a></li>
-				        <li class="category"><a href="#" id="politicianannouncementFilter" data-cat="politician-announcement">Politician announcement</a></li>
-				        <li class="category"><a href="#" id="mediaFilter" data-cat="media">Media incident</a></li>
+				        <li class="category"><a href="#" id="majoreventFilter" data-cat="major-event" class="major-event">Major event</a></li>
+				        <li class="category"><a href="#" id="governmentannouncementFilter" data-cat="government-announcement" class="government-announcement">Government</a></li>
+				        <li class="category"><a href="#" id="oppositionannouncementFilter" data-cat="opposition-or-other" class="opposition-or-other">Opposition/other</a></li>
+				        <li class="category"><a href="#" id="legislationFilter" data-cat="legislation" class="legislation">Legislation</a></li>
+				        <li class="category"><a href="#" id="mediaFilter" data-cat="media" class="media">Media</a></li>
 				        <li class="category"><a href="#" id="showallFilter" data-cat="showall">Show all</a></li>
 				    </ul>
 
@@ -117,7 +115,7 @@
 
 				});
 
-				var catList = ['media','government-announcement','opposition-announcement','major-event','legislation','politician-announcement']
+				var catList = ['media','government-announcement','opposition-or-other','major-event','legislation']
 
 				$(".category a").click(function() {
 
@@ -129,17 +127,17 @@
 						catList.forEach(function(cat) {
 						if (cat != catID) {
 
-							$("#timeline ." + cat).fadeOut();
+							$("#timeline-list ." + cat).fadeOut();
 						}
 						});
 
-						$("#timeline ." + catID).fadeIn();
+						$("#timeline-list ." + catID).fadeIn();
 					} 
 
 					else if (catID === 'showall') {
 
 						catList.forEach(function(cat) {
-							$("#timeline ." + cat).fadeIn();
+							$("#timeline-list ." + cat).fadeIn();
 						});
 
 
@@ -150,40 +148,7 @@
 				
 
 
-				$("#turnbackFilter").click(function() {
-					$("#timeline .turnback").fadeIn();
-		  			$("#timeline .boat_arrival").fadeOut();
-		  			$("#timeline .boat_interception").fadeOut();
-		  			$("#timeline .distress_call").fadeOut();	
-				});
-
-				$("#arrivalFilter").click(function() {
-					$("#timeline .turnback").fadeOut();
-		  			$("#timeline .boat_arrival").fadeIn();
-		  			$("#timeline .boat_interception").fadeOut();
-		  			$("#timeline .distress_call").fadeOut();	
-				});
-
-				$("#distressFilter").click(function() {
-					$("#timeline .turnback").fadeOut();
-		  			$("#timeline .boat_arrival").fadeOut();
-		  			$("#timeline .boat_interception").fadeOut();
-		  			$("#timeline .distress_call").fadeIn();
-				});
-
-				$("#interceptionFilter").click(function() {
-					$("#timeline .turnback").fadeOut();
-		  			$("#timeline .boat_arrival").fadeOut();
-		  			$("#timeline .boat_interception").fadeIn();
-		  			$("#timeline .distress_call").fadeOut();
-				});
-
-				console.log($('.abbrevPopover'));
-
-				$("#showallFilter").click(function() {
-					resetFilter();
-				});
-
+		
 
 				$("#expandAll").click(function() {
 
@@ -215,16 +180,7 @@
 				},1000);
 				});
 
-				function resetFilter() {
-
-					$("#timeline .turnback").fadeIn();
-		  			$("#timeline .boat_arrival").fadeIn();
-		  			$("#timeline .boat_interception").fadeIn();
-		  			$("#timeline .distress_call").fadeIn();
-
-				}
-
- 
+		
 				var stickyNavTop = $('#nav').offset().top;  
 				  
 				var stickyNav = function(){  

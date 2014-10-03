@@ -1,0 +1,4 @@
+TODO
+
+-tabletop and underscore for integration with google docs
+-detect number of categories and assign colours unless default

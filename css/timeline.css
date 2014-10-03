@@ -284,31 +284,68 @@ border-radius: 5px;
 }
 
 
-#timeline .distress_call .cbp_tmlabel h2 { 
+/* Category colours -  to be removed and will be added dynamically in future */
+
+#timeline .government-announcement .cbp_tmlabel h2 { 
 margin-top: 0px;
 padding: 0 0 5px 0;
 border-bottom: 2px solid #2b83ba !important;
 
 }
 
-#timeline .boat_arrival .cbp_tmlabel h2 { 
-margin-top: 0px;
-padding: 0 0 10px 0;
-border-bottom: 2px solid #abdda4 !important;
+.government-announcement .cbp_tmicon, a.government-announcement:before {
+
+background: #2b83ba !important;
+
 }
 
-#timeline .turnback .cbp_tmlabel h2 { 
+.major-event .cbp_tmicon, a.major-event:before {
+
+background: #d7191c !important;
+}
+
+#timeline .major-event .cbp_tmlabel h2 { 
 margin-top: 0px;
 padding: 0 0 10px 0;
 border-bottom: 2px solid #d7191c !important;
 }
 
+#timeline .legislation .cbp_tmlabel h2 { 
+margin-top: 0px;
+padding: 0 0 10px 0;
+border-bottom: 2px solid #abdda4 !important;
+}
 
-#timeline .boat_interception .cbp_tmlabel h2 { 
+.legislation .cbp_tmicon, a.legislation:before {
+
+background: #abdda4 !important;
+}
+
+#timeline .opposition-or-other .cbp_tmlabel h2 { 
 margin-top: 0px;
 padding: 0 5px 10px 0;
 border-bottom: 2px solid #fdae61 !important;
 }
+
+.opposition-or-other .cbp_tmicon, a.opposition-or-other:before {
+
+background: #fdae61 !important;
+
+}
+
+#timeline .media .cbp_tmlabel h2 { 
+margin-top: 0px;
+padding: 0 5px 10px 0;
+border-bottom: 2px solid #c2a5cf !important;
+}
+
+.media .cbp_tmicon, a.media:before {
+
+background: #c2a5cf !important;
+
+}
+
+
 
 .cbp_tmtimeline > li .cbp_tmlabel:after {
 right: 100%;
@@ -385,27 +422,6 @@ background: #B40404;
 line-height: 20px;
 }
 
-.distress_call .cbp_tmicon, .distress_call .catMarker {
-
-background: #2b83ba !important;
-
-}
-
-.boat_interception .cbp_tmicon, .boat_interception .catMarker {
-
-background: #fdae61 !important;
-
-}
-
-.turnback .cbp_tmicon, .turnback .catMarker {
-
-background: #d7191c !important;
-}
-
-.boat_arrival .cbp_tmicon, .boat_arrival .catMarker {
-
-background: #abdda4 !important;
-}
 
 #timeline-list h2 {
 font-size: 23px !important;
@@ -489,24 +505,7 @@ font-size: 17px !important;
 }
 
 .details {
-
 display: none;
-}
-
-#manusLeadImage {
-width:940px;
-height:300px;
-background-image:url('../img/customs.jpg');
-background-repeat:no-repeat;
-position: relative;
-}
-
-#manusImageText {
-
-position: absolute;
-right:20px;
-bottom:10px;
-color:#FFF;
 }
 
 .manusShareLinks {
@@ -516,10 +515,4 @@ float:right;
 text-transform:uppercase;
 font-size:12px;
 font-weight: bold;
-}
-
-
-#timeline .abbrevPopover {
-
-border-bottom: 1px dotted;
 }
