@@ -19,7 +19,7 @@
 		
 		<div id="timeline" class="timeline-container">
 			
-		<div id="nav" class="navbar" data-spy="affix" data-offset-top="54">	
+		<div id="nav" class="navbar" >	
 			<div class="nav-categories">
 					<ul id="category-menu" class="clearfix">
 						<li class="current">Categories</li>
@@ -181,24 +181,26 @@
 
 				});
 
-		
-				var stickyNavTop = $('#nav').offset().top;  
-				  
-				var stickyNav = function(){  
-				var scrollTop = $(window).scrollTop();  
-				       
-				if (scrollTop > stickyNavTop) {   
-				    $('#nav').addClass('sticky');  
-				} else {  
-				    $('#nav').removeClass('sticky');   
-				}  
-				};  
-				  
-				stickyNav();  
-				  
-				$(window).scroll(function() {  
-				    stickyNav();  
-				});  
+				if (window!=window.top) { 
+				
+					setInterval(function(){
+
+						iframeMessenger.getPositionInformation(function(data) {
+					        console.log("pageYOffSet", data['pageYOffset'], "iframeTop", data['iframeTop']);
+					        if (data['iframeTop'] < 0) {
+
+					        	$('#nav').css('top', -1*data['iframeTop'] + 'px');
+					        }
+
+					        if (data['iframeTop'] > 0) {
+					        	$('#nav').css('top', '0px');
+
+					        }
+					    });
+
+					}, 200);
+
+				}
 
 			
 				$(".current").click(function(){
@@ -221,6 +223,8 @@
 					
 				});
 
+
+				
 
 				if( !/iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
 

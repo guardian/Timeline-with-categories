@@ -10,13 +10,13 @@ body {
 .timeline-main {
 width: 90%;
 max-width: 69em;
-margin: 0 auto;
+margin-left:auto;
+margin-right:auto;
+margin-top:70px; 
 }
 
 
-/* bootstrap 3 helpers */
-
-
+/* bootstrap 3 helpers 
 
 #nav.affix-top {
     position: static;
@@ -31,6 +31,14 @@ margin: 0 auto;
 
 .affix,.affix-top {
    position:static;
+}
+
+*/
+
+#nav {
+	position: absolute;
+    width:100%;
+    top: 0;
 }
 
 .timeline-container, .timeline-container p, .timeline-container h2 {
