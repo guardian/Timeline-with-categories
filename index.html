@@ -6,6 +6,8 @@
 		<link rel="stylesheet" type="text/css" href="css/timeline.css" />
 		<script src="js/modernizr.custom.js"></script>
 		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		
 
 		<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
@@ -17,7 +19,7 @@
 		
 		<div id="timeline" class="timeline-container">
 			
-		<div id="nav" class="navbar">	
+		<div id="nav" class="navbar" data-spy="affix" data-offset-top="54">	
 			<div class="nav-categories">
 					<ul id="category-menu" class="clearfix">
 						<li class="current">Categories</li>
@@ -65,7 +67,40 @@
 
 				for (var i = 0; i < data.length; i++) {
 
-					$('#timeline-list').append('<li class="incident ' + data[i]['incident-category'] + '" id="timeline-entry' + (i + 1) + '"><time class="cbp_tmtime" datetime="' + data[i]['date'] + '"><span>' + data[i]['date'] + '</span><span>' + '</time>' + '<div class="cbp_tmicon cbp_tmicon-phone"></div><div class="cbp_tmlabel"><span class="manusupdate">' + data[i]['updated'] + '</span><h2 data-incident="timeline-entry' + (i + 1) + '">' + data[i]['title'] + '</h2><div class="details"><p>' + data[i]['text'] + '</p><p>' + '<span class="update">source: ' + '<a href="' + data[i]['link'] + '" target="_blank">' + data[i]['source'] + '</a></span></p></div></div></li>')
+					$('#timeline-list').append(
+						'<li class="incident ' 
+						+ data[i]['incident-category'] 
+						+ '" id="timeline-entry' 
+						+ (i + 1) 
+						+ '"><time class="cbp_tmtime" datetime="' 
+						+ data[i]['date'] 
+						+ '"><span>' 
+						+ data[i]['date'] 
+						+ '</span><span>' 
+						+ '</time>' 
+						+ '<div class="cbp_tmicon cbp_tmicon-phone"></div><div class="cbp_tmlabel"><span class="manusupdate">' 
+						+ data[i]['updated'] 
+						+ '</span><h2 data-incident="timeline-entry' 
+						+ (i + 1) + '">' 
+						+ data[i]['title'] 
+						+ '</h2><div class="details"><p>' 
+						+ data[i]['text'] 
+						+ '</p><p>'
+						+ '<span class="update">'
+						+ data[i]['source-title']
+						+ '<a href="' 
+						+ data[i]['link'] 
+						+ '" target="_blank">' 
+						+ data[i]['source'] 
+						+ '</a></span><br>'
+						+ '<span class="update">'
+						+ data[i]['analysis-title']
+						+ '<a href="' 
+						+ data[i]['analysis-link'] 
+						+ '" target="_blank">' 
+						+ data[i]['analysis-text'] 
+						+ '</a></span><br>'
+						+ '</p></div></div></li>')
 
 				}
 

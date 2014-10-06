@@ -13,6 +13,26 @@ max-width: 69em;
 margin: 0 auto;
 }
 
+
+/* bootstrap 3 helpers */
+
+
+
+#nav.affix-top {
+    position: static;
+    width:100%; 
+}
+  
+#nav.affix {
+    position: fixed;
+    width:100%;
+    top: 0;
+  }
+
+.affix,.affix-top {
+   position:static;
+}
+
 .timeline-container, .timeline-container p, .timeline-container h2 {
 font-family: 'Lato', Calibri, Arial, sans-serif;
 width:100%;
@@ -143,12 +163,8 @@ margin-bottom: 5px;
 }
 
 .sticky {  
-    position: fixed;  
     width: 100%;  
-    left: 0;  
-    top: 0;  
     z-index: 100;  
-    border-top: 0;  
 }  
 
 .nav-categories li.current {
