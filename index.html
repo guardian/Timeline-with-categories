@@ -38,12 +38,14 @@
 			<div class="clearfix"></div>
 		</div>	
 
-			<div class="timeline-main">
+		<div class="timeline-main">
 	 
 				<ul class="cbp_tmtimeline" id="timeline-list">
 
 				</ul>
-			</div>
+				
+		</div>
+		<div id="footer"></div>
 		</div>
 		<script src="http://interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js" type="text/javascript"></script>
 		<script type="text/javascript">
@@ -63,7 +65,7 @@
 				    jsonpCallback: 'content'
 					}).done(function (data) {
 
-				console.log(data);
+				//console.log(data);
 
 				for (var i = 0; i < data.length; i++) {
 
@@ -123,7 +125,13 @@
 
 				});
 
-				var catList = ['media','government-announcement','opposition-or-other','major-event','legislation']
+				var catList = ['media','government-announcement','opposition-or-other','major-event','legislation'];
+
+				var initialOffset;
+
+				iframeMessenger.getPositionInformation(function(data) {
+							initialOffset = data['iframeTop'];
+						});
 
 				$(".category a").click(function() {
 
@@ -131,6 +139,9 @@
 					console.log(catID);
 					
 					if (catID != 'showall') {
+
+						iframeMessenger.scrollTo(0,initialOffset);
+						$('#nav').animate({top: '0px'}, 100);
 
 						catList.forEach(function(cat) {
 						if (cat != catID) {
@@ -143,7 +154,6 @@
 					} 
 
 					else if (catID === 'showall') {
-
 						catList.forEach(function(cat) {
 							$("#timeline-list ." + cat).fadeIn();
 						});
@@ -186,14 +196,16 @@
 					setInterval(function(){
 
 						iframeMessenger.getPositionInformation(function(data) {
-					        console.log("pageYOffSet", data['pageYOffset'], "iframeTop", data['iframeTop']);
-					        if (data['iframeTop'] < 0) {
+							var endPoint = $("#footer").position().top
+					        console.log("pageYOffSet", data['pageYOffset'], "iframeTop", data['iframeTop'], "innerHeight", data['innerHeight']);
+					        if (data['iframeTop'] < 0 && data['iframeTop'] > (-1*(endPoint-70))) {
 
-					        	$('#nav').css('top', -1*data['iframeTop'] + 'px');
+					        	$('#nav').animate({top: -1*data['iframeTop'] + 'px'}, 100)
+	
 					        }
 
-					        if (data['iframeTop'] > 0) {
-					        	$('#nav').css('top', '0px');
+					        else if (data['iframeTop'] > 0) {
+					        	$('#nav').animate({top: '0px'}, 100)
 
 					        }
 					    });
