@@ -68,6 +68,8 @@
 
     		function buildTimeline(data) {
 
+    			console.log(data);
+
     			for (var i = 0; i < data.length; i++) {
 
 					$('#timeline-list').append(
@@ -89,19 +91,11 @@
 						+ '</h2><div class="details"><p>' 
 						+ data[i]['text'] 
 						+ '</p><p>'
-						+ '<span class="update">'
-						+ data[i]['source-title']
+						+ '<span class="update">Source: '
 						+ '<a href="' 
 						+ data[i]['link'] 
 						+ '" target="_blank">' 
 						+ data[i]['source'] 
-						+ '</a></span><br>'
-						+ '<span class="update">'
-						+ data[i]['analysis-title']
-						+ '<a href="' 
-						+ data[i]['analysis-link'] 
-						+ '" target="_blank">' 
-						+ data[i]['analysis-text'] 
 						+ '</a></span><br>'
 						+ '</p></div></div></li>')
 
