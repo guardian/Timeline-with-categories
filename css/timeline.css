@@ -310,66 +310,25 @@ border-radius: 5px;
 
 /* Category colours -  to be removed and will be added dynamically in future */
 
-#timeline .government-announcement .cbp_tmlabel h2 { 
-margin-top: 0px;
-padding: 0 0 5px 0;
-border-bottom: 2px solid #2b83ba !important;
-
+.cat0 .cbp_tmicon, a.cat0:before {
+	background: #edf8fb !important;
 }
 
-.government-announcement .cbp_tmicon, a.government-announcement:before {
-
-background: #2b83ba !important;
-
+.cat1 .cbp_tmicon, a.cat1:before {
+	background: #bfd3e6 !important;
 }
-
-.major-event .cbp_tmicon, a.major-event:before {
-
-background: #d7191c !important;
+.cat2 .cbp_tmicon, a.cat2:before {
+	background: #9ebcda !important;
 }
-
-#timeline .major-event .cbp_tmlabel h2 { 
-margin-top: 0px;
-padding: 0 0 10px 0;
-border-bottom: 2px solid #d7191c !important;
+.cat3 .cbp_tmicon, a.cat3:before {
+	background: #8c96c6 !important;
 }
-
-#timeline .legislation .cbp_tmlabel h2 { 
-margin-top: 0px;
-padding: 0 0 10px 0;
-border-bottom: 2px solid #abdda4 !important;
+.cat4 .cbp_tmicon, a.cat4:before {
+	background: #8856a7 !important;
 }
-
-.legislation .cbp_tmicon, a.legislation:before {
-
-background: #abdda4 !important;
+.cat5 .cbp_tmicon, a.cat5:before {
+	background: #810f7c !important;
 }
-
-#timeline .opposition-or-other .cbp_tmlabel h2 { 
-margin-top: 0px;
-padding: 0 5px 10px 0;
-border-bottom: 2px solid #fdae61 !important;
-}
-
-.opposition-or-other .cbp_tmicon, a.opposition-or-other:before {
-
-background: #fdae61 !important;
-
-}
-
-#timeline .media .cbp_tmlabel h2 { 
-margin-top: 0px;
-padding: 0 5px 10px 0;
-border-bottom: 2px solid #c2a5cf !important;
-}
-
-.media .cbp_tmicon, a.media:before {
-
-background: #c2a5cf !important;
-
-}
-
-
 
 .cbp_tmtimeline > li .cbp_tmlabel:after {
 right: 100%;

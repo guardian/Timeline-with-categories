@@ -4,7 +4,6 @@
 		<title>Timeline | The Guardian</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		<link rel="stylesheet" type="text/css" href="css/timeline.css" />
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>	
 
 		<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
@@ -18,13 +17,6 @@
 		<div id="nav" class="navbar" >	
 			<div class="nav-categories">
 					<ul id="category-menu" class="clearfix">
-						<li class="current">Categories</li>
-				        <li class="category"><a href="#" id="majoreventFilter" data-cat="major-event" class="major-event">Major event</a></li>
-				        <li class="category"><a href="#" id="governmentannouncementFilter" data-cat="government-announcement" class="government-announcement">Government</a></li>
-				        <li class="category"><a href="#" id="oppositionannouncementFilter" data-cat="opposition-or-other" class="opposition-or-other">Opposition/other</a></li>
-				        <li class="category"><a href="#" id="legislationFilter" data-cat="legislation" class="legislation">Legislation</a></li>
-				        <li class="category"><a href="#" id="mediaFilter" data-cat="media" class="media">Media</a></li>
-				        <li class="category"><a href="#" id="showallFilter" data-cat="showall">Show all</a></li>
 				    </ul>
 
 			</div>
@@ -37,18 +29,18 @@
 		<div class="timeline-main">
 	 
 				<ul class="cbp_tmtimeline" id="timeline-list">
-
 				</ul>
 				
 		</div>
 		<div id="footer"></div>
 		</div>
+		<script type="text/javascript" src="js/d3.min.js"></script>	
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>	
 		<script src="http://interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js" type="text/javascript"></script>
 		<script type="text/javascript">
 		iframeMessenger.enableAutoResize();
 
 		function initTimeline() {
-			var expanded = "no";
 
 			//get spreadsheet key from embed url
 
@@ -70,11 +62,45 @@
 
     			console.log(data);
 
+    			//Make list of categories
+
+    			var catListTemp = d3.nest()
+						.key(function(d){ return d.category})
+						.entries(data);
+
+				var catList = [];			
+
+				catListTemp.forEach(function(d) {	
+					catList.push(d.key);
+				});		
+
+				console.log("catList",catList);
+
+				$('#category-menu').append('<li class="current">Categories</li>');
+
+				catList.forEach(function(cat,i) {
+
+					$('#category-menu').append(
+						'<li class="category"><a href="#" data-cat="' +
+						cat.replace(/ /g,"_") +
+						'" class="' +
+						cat.replace(/ /g,"_") +
+						' cat' + i + 
+						'">' +
+						cat +
+						'</li>'
+						);
+
+				})
+
     			for (var i = 0; i < data.length; i++) {
+
+    				currCat = data[i]['category'];
+    				console.log(catList.indexOf(currCat));
 
 					$('#timeline-list').append(
 						'<li class="incident ' 
-						+ data[i]['incident-category'] 
+						+ data[i]['category'].replace(/ /g,"_") + ' cat' + catList.indexOf(data[i]['category'])
 						+ '" id="timeline-entry' 
 						+ (i + 1) 
 						+ '"><time class="cbp_tmtime" datetime="' 
@@ -84,7 +110,7 @@
 						+ '</span><span>' 
 						+ '</time>' 
 						+ '<div class="cbp_tmicon cbp_tmicon-phone"></div><div class="cbp_tmlabel"><span class="manusupdate">' 
-						+ data[i]['updated'] 
+						+ data[i]['kicker'] 
 						+ '</span><h2 data-incident="timeline-entry' 
 						+ (i + 1) + '">' 
 						+ data[i]['title'] 
@@ -101,9 +127,9 @@
 
 				}
 
-				var catList = ['media','government-announcement','opposition-or-other','major-event','legislation'];
+				//Listeners
 
-				//Listeners 
+				var expanded = "no";
 
 				$(".incident h2").click(function() {
 
@@ -132,9 +158,9 @@
 						$('#nav').animate({top: '0px'}, 100);
 
 						catList.forEach(function(cat) {
-						if (cat != catID) {
+						if (cat.replace(/ /g,"_") != catID) {
 
-							$("#timeline-list ." + cat).fadeOut();
+							$("#timeline-list ." + cat.replace(/ /g,"_")).fadeOut();
 						}
 						});
 
@@ -143,7 +169,7 @@
 
 					else if (catID === 'showall') {
 						catList.forEach(function(cat) {
-							$("#timeline-list ." + cat).fadeIn();
+							$("#timeline-list ." + cat.replace(/ /g,"_")).fadeIn();
 						});
 
 
@@ -154,7 +180,7 @@
 
 				$("#expandAll").click(function() {
 
-					if (expanded == "no") {
+					if (expanded == True) {
 					$(".details").slideDown();
 					$("#expandAll").removeClass("glyphicon-plus-sign");
 					$("#expandAll").addClass("glyphicon-minus-sign");
