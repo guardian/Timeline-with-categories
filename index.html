@@ -28,7 +28,7 @@
 
 		<div class="timeline-main">
 	 
-				<ul class="cbp_tmtimeline" id="timeline-list">
+				<ul id="timeline-list">
 				</ul>
 				
 		</div>
@@ -91,7 +91,9 @@
 						'</li>'
 						);
 
-				})
+				});
+
+				$('#category-menu').append('<li class="category"><a href="#" data-cat="showall">Show all</a></li>');
 
     			for (var i = 0; i < data.length; i++) {
 
@@ -103,13 +105,13 @@
 						+ data[i]['category'].replace(/ /g,"_") + ' cat' + catList.indexOf(data[i]['category'])
 						+ '" id="timeline-entry' 
 						+ (i + 1) 
-						+ '"><time class="cbp_tmtime" datetime="' 
+						+ '"><time class="timeline-date" datetime="' 
 						+ data[i]['date'] 
 						+ '"><span>' 
 						+ data[i]['date'] 
 						+ '</span><span>' 
 						+ '</time>' 
-						+ '<div class="cbp_tmicon cbp_tmicon-phone"></div><div class="cbp_tmlabel"><span class="manusupdate">' 
+						+ '<div class="timeline-circle"></div><div class="timeline-entry"><span class="manusupdate">' 
 						+ data[i]['kicker'] 
 						+ '</span><h2 data-incident="timeline-entry' 
 						+ (i + 1) + '">' 
@@ -168,6 +170,7 @@
 					} 
 
 					else if (catID === 'showall') {
+						console.log("yep");
 						catList.forEach(function(cat) {
 							$("#timeline-list ." + cat.replace(/ /g,"_")).fadeIn();
 						});
