@@ -4,7 +4,7 @@
 		<title>Timeline | The Guardian</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		<link rel="stylesheet" type="text/css" href="css/timeline.css" />
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>		
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>	
 
 		<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
@@ -15,7 +15,6 @@
 	<body>
 		
 		<div id="timeline" class="timeline-container">
-			
 		<div id="nav" class="navbar" >	
 			<div class="nav-categories">
 					<ul id="category-menu" class="clearfix">
@@ -48,23 +47,28 @@
 		<script type="text/javascript">
 		iframeMessenger.enableAutoResize();
 
-		var gia=(function(gia,$){
+		function initTimeline() {
+			var expanded = "no";
 
-		
-			gia.init = function(){
+			//get spreadsheet key from embed url
 
-				var expanded = "no";
+			var key = getParameter( "key");
+    		var url = "http://interactive.guim.co.uk/docsdata/" + key + ".json";
 
-				$.ajax({
-				    url: 'data/natsec.json',
-				    dataType: 'jsonp',
-				    jsonp: false,
-				    jsonpCallback: 'content'
-					}).done(function (data) {
+    		console.log(key,url);
 
-				//console.log(data);
+    		$.getJSON(url, function(data) {
 
-				for (var i = 0; i < data.length; i++) {
+		    dataset = data.sheets.Sheet1;
+		    buildTimeline(dataset);
+
+    		});
+
+    		}
+
+    		function buildTimeline(data) {
+
+    			for (var i = 0; i < data.length; i++) {
 
 					$('#timeline-list').append(
 						'<li class="incident ' 
@@ -103,7 +107,11 @@
 
 				}
 
-					$(".incident h2").click(function() {
+				var catList = ['media','government-announcement','opposition-or-other','major-event','legislation'];
+
+				//Listeners 
+
+				$(".incident h2").click(function() {
 
 					var currInc = $(this).attr('data-incident');
 			
@@ -117,20 +125,9 @@
 						$("#" + currInc + " h2").css("background-image", "url(img/up.png)"); 
 					}
 					
-
 			    });
 
-				});
-
-				var catList = ['media','government-announcement','opposition-or-other','major-event','legislation'];
-
-				var initialOffset;
-
-				iframeMessenger.getPositionInformation(function(data) {
-							initialOffset = data['iframeTop'];
-						});
-
-				$(".category a").click(function() {
+			    $(".category a").click(function() {
 
 					var catID = $(this).data('cat');
 					console.log(catID);
@@ -160,10 +157,6 @@
 									
 
 				});
-				
-
-
-		
 
 				$("#expandAll").click(function() {
 
@@ -188,6 +181,34 @@
 
 				});
 
+				$(".current").click(function(){
+
+					getW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+					if ($(".category").is(':visible')) {
+						$(".category").hide();
+					}
+
+					else if ($(".category").is(':hidden')) {
+						$(".category").show();
+						if (getW > 601) {
+
+						$(".nav-categories li").css("display", "inline-block");
+						
+						}
+					}
+					
+					
+				});
+
+				//Sticky nav within iframe
+
+			    var initialOffset;
+
+				iframeMessenger.getPositionInformation(function(data) {
+							initialOffset = data['iframeTop'];
+						});
+
 				if (window!=window.top) { 
 				
 					setInterval(function(){
@@ -210,31 +231,7 @@
 					}, 200);
 
 				}
-
-			
-				$(".current").click(function(){
-
-					getW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-
-					if ($(".category").is(':visible')) {
-						$(".category").hide();
-					}
-
-					else if ($(".category").is(':hidden')) {
-						$(".category").show();
-						if (getW > 601) {
-
-						$(".nav-categories li").css("display", "inline-block");
-						
-						}
-					}
-					
-					
-				});
-
-
 				
-
 				if( !/iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
 
 				$(window).resize(function() {
@@ -267,15 +264,27 @@
 
 				}
 
-	
+    	}
 
-				}
 
-			return gia;
+		//end initTimeline
 
-		}(gia || {},jQuery));
+		function getParameter(paramName) {
+		  var searchString = window.location.search.substring(1),
+		      i, val, params = searchString.split("&");
 
-		gia.init();
+		  for (i=0;i<params.length;i++) {
+		    val = params[i].split("=");
+		    if (val[0] == paramName) {
+		      return val[1];
+		    }
+		  }
+		  return null;
+		}
+
+		initTimeline();
+
+
 
 
 	</script>	
