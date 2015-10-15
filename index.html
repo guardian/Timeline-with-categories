@@ -3,41 +3,424 @@
 	<head>
 		<title>Timeline | The Guardian</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<link rel="stylesheet" type="text/css" href="css/timeline.css" />
+		<!--<link rel="stylesheet" type="text/css" href="css/timeline.css" />-->
+<style>
 
+@font-face {
+font-family:'Guardian Egyptian Web'; src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Regular.eot');src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Regular.eot?#iefix') format('embedded-opentype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Regular.woff2') format('woff2'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Regular.woff') format('woff'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Regular.ttf') format('truetype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Regular.svg#GuardianEgyptianWeb-Regular') format('svg');font-weight:400;font-style:normal;font-stretch:normal}
+
+@font-face {
+font-family:'Guardian Egyptian Web'; src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Medium.eot');src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Medium.eot?#iefix') format('embedded-opentype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Medium.woff2') format('woff2'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Medium.woff') format('woff'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Medium.ttf') format('truetype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Medium.svg#GuardianEgyptianWeb-Medium') format('svg');font-weight:500;font-style:normal;font-stretch:normal}
+
+@font-face {
+font-family:'Guardian Egyptian Web'; src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Semibold.eot');src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Semibold.eot?#iefix') format('embedded-opentype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Semibold.woff2') format('woff2'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Semibold.woff') format('woff'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Semibold.ttf') format('truetype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Semibold.svg#GuardianEgyptianWeb-Semibold') format('svg');font-weight:900;font-style:normal;font-stretch:normal}
+
+@font-face {
+font-family:'Guardian Text Sans Web';
+src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianTextSansWeb/GuardianTextSansWeb-Regular.eot');src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianTextSansWeb/GuardianTextSansWeb-Regular.eot?#iefix') format('embedded-opentype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianTextSansWeb/GuardianTextSansWeb-Regular.woff2') format('woff2'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianTextSansWeb/GuardianTextSansWeb-Regular.woff') format('woff'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianTextSansWeb/GuardianTextSansWeb-Regular.ttf') format('truetype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianTextSansWeb/GuardianTextSansWeb-Regular.svg#GuardianTextSansWeb-Regular') format('svg');font-weight:400;font-style:normal;font-stretch:normal}
+
+@font-face {
+font-family:'Guardian Agate Sans';
+src:url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Reg.eot');src:url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Reg.eot?#iefix') format('embedded-opentype'),url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Reg.woff') format('woff'),url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Reg.ttf') format('truetype'),url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Reg.svg#Guardian-Text-Egyp-Web-Reg') format('svg');font-weight:normal;font-style:normal;font-stretch:normal}
+
+@font-face {
+font-family:'Guardian Agate Sans';
+src:url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Bold.eot');src:url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Bold.eot?#iefix') format('embedded-opentype'),url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Bold.woff') format('woff'),url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Bold.ttf') format('truetype'),url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Bold.svg#Guardian-Text-Egyp-Web-Medium') format('svg');font-weight:bold;font-style:normal;font-stretch:normal}
+
+html {
+-webkit-font-smoothing:antialiased;
+font-family:'Guardian Egyptian Web', georgia, serif;
+box-sizing:border-box}
+
+*, 
+*:before, 
+*:after {
+box-sizing:inherit}
+
+body {
+margin:0;
+padding:0;
+line-height:1.5;
+color:#333}
+
+#timeline {
+position:relative;
+font-size:.8rem;
+max-width:1200px;
+margin:0 auto}
+
+#nav {
+position:absolute;
+top:0;
+left:0;
+right:0;
+background:#fff;
+padding:10px 0; 
+border-bottom:2px solid #000;
+z-index:100}
+
+.nav-categories {
+position:relative;
+margin-left:240px;
+color:#767676;
+font-size:.8125rem;
+font-family:'Guardian Text Sans Web', georgia, serif}
+
+.nav-categories:before {
+content:'Filter By:';
+display:inline-block;
+margin-right:.5rem;
+color:#333;
+font-weight:bold}
+
+.nav-categories ul,
+.nav-categories li {
+line-height:1rem;
+display:inline-block}
+
+.nav-categories li:first-child {
+display:none}
+
+.nav-categories a {
+margin-right:1rem;
+cursor:pointer;
+position:relative;
+padding-left:1.25rem}
+
+.nav-categories a:hover {
+color:#333}
+
+.nav-categories a:before {
+content:'';
+position:absolute;
+left:0;
+top:-2px;
+width:1rem;
+height:1rem;
+border-radius:50%;
+margin-right:4px}
+
+.expand {
+position:absolute;
+right:0;
+top:-4px;}
+
+.expand a {
+padding-left:.75rem;
+margin-right:0}
+
+p {
+font-family:'Guardian Text Sans Web', georgia, serif;
+color:#767676}
+
+ul,
+li {
+margin:0;
+padding:0}
+
+li {
+list-style-type:none}
+
+a {
+cursor:pointer;
+text-decoration:none}
+
+.timeline-main {
+padding-top:4rem;}
+
+#timeline-wrapper {
+position:relative;
+max-width:860px}
+
+#timeline-wrapper:before {
+content:'';
+position:absolute;
+left:1rem;
+top:0;
+bottom:0;
+border-left:1px solid #333;
+transition:.25s ease}
+
+#timeline-list {
+position:relative}
+
+#timeline-list li {
+position:relative;
+padding:0 0 2.5rem 240px}
+
+#timeline-list li:last-child {
+background:#fff}
+
+.timeline-circle {
+position:absolute;
+top:0;
+left:0;
+width:32px;
+height:32px;
+border-radius:50%;
+transition:.25s ease}
+
+.cat0 .timeline-circle,
+.cat0 :before {
+background:#005689}
+
+.cat1 .timeline-circle,
+.cat1 :before {
+background:#7d0068}
+
+.cat2 .timeline-circle,
+.cat2 :before {
+background:#4bc6df}
+
+.cat3 .timeline-circle,
+.cat3 :before {
+background:#b82266}
+
+.timeline-date {
+line-height:1.25;
+position:absolute;
+top:0;
+left:2.5rem}
+
+.timeline-date span span {
+display:block;
+font-size:11px;
+color:#767676}
+
+.manusupdate {
+display:block;
+font-size:10px;
+line-height:1;
+color:#D7191C;
+position:absolute;
+top:-1rem}
+
+.incident h2 {
+margin:0;
+padding-bottom:.5rem;
+border-bottom:1px solid #DEDEDE;
+cursor:pointer;
+padding-right:5rem;
+line-height:1.1;
+font-size:20px}
+
+.event-type,
+.details {
+display:none}
+
+.btn {
+color:#000;
+display:inline-block;
+height:1.5rem;
+padding:0 .5rem 0 .75rem;
+border-radius:.75rem;
+font-size:11px;
+line-height:1.5rem;
+border:1px solid #000;
+transition:.25s ease}
+
+.update a {
+color:#005689;
+border-color:#005689}
+
+.update a:after {
+content:'';
+margin:-2px 0 0 .5rem;
+display:inline-block;
+vertical-align:middle;
+width:11px;
+height:11px;
+background:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='45'%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cpath d='M21.6347884 45L19.7244252 42.9966678 34.3835388 24.0249917 0 24.0249917 0 20.9960013 34.3835388 20.9960013 19.7244252 2.00333222 21.6347884 0 41.9980007 21.4668444 41.9980007 23.5211596 21.6347884 44.985005' fill='%23005689'/%3E%3C/g%3E%3C/svg%3E") no-repeat;
+background-size:contain}
+
+.update a:hover {
+color:#fff;
+background-color:#005689}
+
+.update a:hover:after {
+background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='45'%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cpath d='M21.6347884 45L19.7244252 42.9966678 34.3835388 24.0249917 0 24.0249917 0 20.9960013 34.3835388 20.9960013 19.7244252 2.00333222 21.6347884 0 41.9980007 21.4668444 41.9980007 23.5211596 21.6347884 44.985005' fill='%23fff'/%3E%3C/g%3E%3C/svg%3E")}
+
+.toggle {
+position:absolute;
+top:0;
+right:0;
+width:1.5rem;
+height:1.5rem;
+border-radius:50%;
+border:1px solid #000;
+background:#fff;
+line-height:1.5rem;
+font-size:1.25rem;
+text-align:center;
+-webkit-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none; 
+user-select:none}
+
+.toggle:after {
+content:'+'}
+
+.toggle:hover {
+background:#000;
+color:#fff;
+transition:.25s ease}
+
+.open .details {
+display:block}
+
+.open .toggle:after {
+content:'-'}
+
+@media screen and (max-width:1000px){ 
+
+	.nav-categories {
+	margin-left:0}
+
+	
+}
+
+@media screen and (max-width:859px){ 
+
+	#timeline-list li {
+	padding-left:190px}
+
+	
+}
+
+@media screen and (max-width:620px){ 
+
+	#timeline-wrapper:before {
+	left:12px}
+
+	.timeline-circle {
+	width:24px;
+	height:24px}
+
+	.timeline-date {
+	width:100px;
+	font-size:12px;
+	left:2rem}
+
+	#timeline-list li {
+	padding-left:140px}
+		
+	#timeline-list h2 {
+	padding-right:3rem}
+
+	
+}
+
+@media screen and (max-width:380px){ 
+
+	.timeline-circle,
+	#timeline-wrapper:before {
+	display:none}
+	
+	#timeline-list li {
+	margin-bottom:3rem;
+	border-bottom:1px solid #333;
+	padding:0 0 2rem 0}
+	
+	.timeline-date {
+	width:auto;
+	display:block;
+	text-align:center;
+	position:static;
+	top:auto;
+	left:auto}
+	
+	.timeline-date span span {
+	color:#000;
+	display:inline}
+	
+	.manusupdate {
+	position:static;
+    top:auto;
+    margin:.25rem 0;
+	text-align:center}
+	
+	#timeline-list h2 {
+	border:0;
+	margin-bottom:1rem;
+	text-align:center;
+	padding:0}
+	
+	.event-type {
+	text-transform:capitalize;
+	margin:-.25rem 0 0;
+	line-height:1;
+	display:block;
+	font-size:11px;
+	text-align:center}
+	
+	.event-type:before {
+	content:'';
+	display:inline-block;
+	vertical-align:middle;
+	width:12px;
+	height:12px;
+	border-radius:50%;
+	margin-right:4px}
+	
+	.update {
+	text-align:center}
+	
+	.toggle {
+	left:50%;
+	bottom:0;
+	top:auto;
+	width:2rem;
+	height:2rem;
+	line-height:2rem;
+	margin:0 0 -1rem -1rem}
+
+	
+}
+		
+	
+</style>
 		<!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-
 	</head>
 	<body>
 		
 		<div id="timeline" class="timeline-container">
-		<div id="nav" class="navbar" >	
-			<div class="nav-categories">
-					<ul id="category-menu" class="clearfix">
-				    </ul>
-
-			</div>
-			<div id="nav-buttons">
-				<span class="glyphicon glyphicon-plus-sign" id="expandAll" title="Expand or minimise all"></span>
-			</div>	 
-			<div class="clearfix"></div>
-		</div>	
-
-		<div class="timeline-main">
-	 
-				<ul id="timeline-list">
-				</ul>
+		
+			<div id="nav" class="navbar">	
+		
+				<div class="nav-categories">
+					<ul id="category-menu" class="clearfix"></ul>
+				</div>
 				
+				<!--
+				<div id="nav-buttons">
+					<span class="glyphicon glyphicon-plus-sign" id="expandAll" title="Expand or minimise all"></span>
+				</div>	
+				-->
+			
+			</div>	
+
+			<div class="timeline-main">
+	 
+				<div id="timeline-wrapper">
+					<ul id="timeline-list"></ul>
+				</div>
+				
+			</div>
+			
+			<div id="footer"></div>
+			
 		</div>
-		<div id="footer"></div>
-		</div>
-		<script type="text/javascript" src="js/d3.min.js"></script>	
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>	
-		<script src="http://interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js" type="text/javascript"></script>
-		<script type="text/javascript">
+		<script src="js/d3.min.js"></script>	
+		<script src="js/jquery-1.11.1.min.js"></script>	
+		<script src="http://interactive.guim.co.uk/libs/iframe-messenger/iframeMessenger.js"></script>
+		<script>
+		
+		var daysArr = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+		var monthsArr = ['January','February','March','April','May','June','July','August','September','October','November','December']
+		
 		iframeMessenger.enableAutoResize();
 
 		function initTimeline() {
@@ -47,7 +430,7 @@
 			var key = getParameter( "key");
     		var url = "http://interactive.guim.co.uk/docsdata/" + key + ".json";
 
-    		console.log(key,url);
+    		//console.log(key,url);
 
     		$.getJSON(url, function(data) {
 
@@ -60,8 +443,7 @@
 
     		function buildTimeline(data) {
 
-    			console.log(data);
-
+    			//console.log(data);
     			//Make list of categories
 
     			var catListTemp = d3.nest()
@@ -74,65 +456,88 @@
 					catList.push(d.key);
 				});		
 
-				console.log("catList",catList);
+				//console.log("catList",catList);
 
-				$('#category-menu').append('<li class="current">Categories</li>');
+				var $menu = $('#category-menu');
+				var menuStr = '<li class="current">Categories</li>';
 
 				catList.forEach(function(cat,i) {
 
-					$('#category-menu').append(
-						'<li class="category"><a href="#" data-cat="' +
+					menuStr += '<li class="category cat'+i+'"><a data-cat="' +
 						cat.replace(/ /g,"_") +
 						'" class="' +
 						cat.replace(/ /g,"_") +
-						' cat' + i + 
 						'">' +
 						cat +
-						'</li>'
-						);
+						'</li>';
 
 				});
 
-				$('#category-menu').append('<li class="category"><a href="#" data-cat="showall">Show all</a></li>');
+				//menuStr += '<li class="showall"><a class="btn" data-cat="showall">Show All</a></li>';
+				menuStr += '<li class="expand"><a class="btn" data-cat="expandall">Expand All</a></li>';
+				
+				$menu.html(menuStr);
 
     			for (var i = 0; i < data.length; i++) {
+    			
+    				var theEvent = data[i];
+    				var currCat = theEvent['category'];
+    				var theDate = theEvent['date'];
+    				var chunks = theDate.split('/');
+    				var theDay = chunks[0]*1;
+    				var theMonth = chunks[1]*1;
+    				var theYear = chunks[2]*1;
+    				var theMonth = monthsArr[theMonth-1];
+    				var jsDateFormat = new Date(theMonth+'-'+theDay+'-'+theYear);
+    				var theDayofWeek = daysArr[jsDateFormat.getDay()]
 
-    				currCat = data[i]['category'];
-    				console.log(catList.indexOf(currCat));
+    				//currCat = data[i]['category'];
+    				//console.log(catList.indexOf(currCat));
 
 					$('#timeline-list').append(
 						'<li class="incident ' 
-						+ data[i]['category'].replace(/ /g,"_") + ' cat' + catList.indexOf(data[i]['category'])
+						+ currCat.replace(/ /g,"_") + ' cat' + catList.indexOf(currCat)
 						+ '" id="timeline-entry' 
 						+ (i + 1) 
 						+ '"><time class="timeline-date" datetime="' 
-						+ data[i]['date'] 
+						+ theDate 
 						+ '"><span>' 
-						+ data[i]['date'] 
-						+ '</span><span>' 
+						+ theDayofWeek+' '+theDay+' '+theMonth 
+						+ ' <span>'+theYear+'</span></span>' 
 						+ '</time>' 
-						+ '<div class="timeline-circle"></div><div class="timeline-entry"><span class="manusupdate">' 
+						+ '<div class="timeline-circle" title="'+currCat+'"></div><div class="timeline-entry"><span class="manusupdate">' 
 						+ data[i]['kicker'] 
 						+ '</span><h2 data-incident="timeline-entry' 
 						+ (i + 1) + '">' 
 						+ data[i]['title'] 
-						+ '</h2><div class="details"><p>' 
+						+ '</h2>'
+						+ '<p class="event-type">'+currCat+'</p>'
+						+ '<div class="details"><p>' 
 						+ data[i]['text'] 
-						+ '</p><p>'
-						+ '<span class="update">Source: '
-						+ '<a href="' 
+						+ '</p><p class="update">'
+						+ '<a class="btn" href="' 
 						+ data[i]['link'] 
 						+ '" target="_blank">' 
 						+ data[i]['source'] 
-						+ '</a></span><br>'
-						+ '</p></div></div></li>')
+						+ '</a>'
+						+ '</p></div></div>'
+						+ '<a class="toggle"></a></li>')
 
 				}
 
 				//Listeners
 
 				var expanded = "no";
-
+				
+				// TOGGLE
+				$("a.toggle,h2").click(function(){
+				
+					$(this).parents('li').toggleClass('open');
+				
+				});
+				
+				
+				/*
 				$(".incident h2").click(function() {
 
 					var currInc = $(this).attr('data-incident');
@@ -148,6 +553,7 @@
 					}
 					
 			    });
+			    */
 
 			    $(".category a").click(function() {
 
@@ -170,10 +576,15 @@
 					} 
 
 					else if (catID === 'showall') {
-						console.log("yep");
+						//console.log("yep");
+						
+						/*
 						catList.forEach(function(cat) {
 							$("#timeline-list ." + cat.replace(/ /g,"_")).fadeIn();
 						});
+						*/
+						
+						$('#timeline-list li').addClass('open')
 
 
 					}
