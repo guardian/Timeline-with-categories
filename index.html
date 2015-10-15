@@ -87,8 +87,9 @@ cursor:pointer;
 position:relative;
 padding-left:1.25rem}
 
-.nav-categories a:hover {
-color:#333}
+.nav-categories a:hover,
+.nav-categories .on {
+color:#000}
 
 .nav-categories a:before {
 content:'';
@@ -100,14 +101,26 @@ height:1rem;
 border-radius:50%;
 margin-right:4px}
 
-.expand {
+.nav-buttons {
 position:absolute;
 right:0;
-top:-4px;}
+top:6px}
 
-.expand a {
-padding-left:.75rem;
-margin-right:0}
+.nav-buttons li {
+display:inline-block}
+
+.nav-buttons .show {
+display:none}
+
+.nav-buttons .show.on {
+display:inline-block}
+
+.nav-buttons .btn {
+padding:0 .75rem}
+
+.nav-buttons .btn:hover {
+color:#fff;
+background:#000}
 
 p {
 font-family:'Guardian Text Sans Web', georgia, serif;
@@ -147,6 +160,9 @@ position:relative}
 #timeline-list li {
 position:relative;
 padding:0 0 2.5rem 240px}
+
+#timeline-list li.hidden {
+display:none}
 
 #timeline-list li:last-child {
 background:#fff}
@@ -320,6 +336,8 @@ content:'-'}
 
 @media screen and (max-width:380px){ 
 
+	
+	.nav-buttons .expand,
 	.timeline-circle,
 	#timeline-wrapper:before {
 	display:none}
@@ -399,7 +417,14 @@ content:'-'}
 			<div id="nav" class="navbar">	
 		
 				<div class="nav-categories">
-					<ul id="category-menu" class="clearfix"></ul>
+					<ul id="category-menu"></ul>
+				</div>
+				
+				<div class="nav-buttons">
+					<ul id="buttons-menu">
+						<li class="show"><a class="btn">Reset</a></li>
+						<li class="expand"><a class="btn" data-cat="expandall">Expand All</a></li>
+					</ul>
 				</div>
 				
 				<!--
@@ -481,8 +506,6 @@ content:'-'}
 
 				});
 
-				//menuStr += '<li class="showall"><a class="btn" data-cat="showall">Show All</a></li>';
-				menuStr += '<li class="expand"><a class="btn" data-cat="expandall">Expand All</a></li>';
 				
 				$menu.html(menuStr);
 
@@ -535,7 +558,7 @@ content:'-'}
 
 				//Listeners
 
-				var expanded = "no";
+				//var expanded = "no";
 				
 				// TOGGLE
 				$("a.toggle,h2").click(function(){
@@ -562,44 +585,77 @@ content:'-'}
 					
 			    });
 			    */
+			    
+			    var $filters = $(".category a");
+			    var $list = $('#timeline-list li');
+			    var $showAll = $('.show');
+			    var $expandAll = $('.expand a');
+			    
+				
+				// TOGGLE ALL EVENTS DESC
+			    $expandAll.click(function(){
+			     
+			     	var state = ($expandAll.text()=='Expand All')? 1:0;
+			     	
+			     	if (state){
+			     		$expandAll.text('Collapse All');
+			     		$list.addClass('open');	
+			     	}
+			     	
+			     	else {
+						$expandAll.text('Expand All');
+			     		$list.removeClass('open');	
+			     	}
+			     	
+			    });
+			     
+			    // SHOW ALL EVENTS
+			    $showAll.click(function(){
+			     
+			    	$list.removeClass('hidden');
+			    	$showAll.removeClass('on');
+			    	$filters.removeClass('on');
+			     
+			    });
 
-			    $(".category a").click(function() {
-
-					var catID = $(this).data('cat');
-					console.log(catID);
+				
+				
+			    $filters.click(function(){
+			    
+			    	var $node = $(this);
+					var catID = $node.data('cat');
 					
-					if (catID != 'showall') {
+					//console.log(catID);
+					
+					//if (catID != 'showall') {
 
 						iframeMessenger.scrollTo(0,initialOffset);
-						$('#nav').animate({top: '0px'}, 100);
-
-						catList.forEach(function(cat) {
-						if (cat.replace(/ /g,"_") != catID) {
-
-							$("#timeline-list ." + cat.replace(/ /g,"_")).fadeOut();
-						}
-						});
-
-						$("#timeline-list ." + catID).fadeIn();
-					} 
-
-					else if (catID === 'showall') {
-						//console.log("yep");
+						
+						$('#nav').animate({top:0}, 100);
 						
 						/*
 						catList.forEach(function(cat) {
-							$("#timeline-list ." + cat.replace(/ /g,"_")).fadeIn();
+							if (cat.replace(/ /g,"_") != catID) {
+
+								$("#timeline-list ." + cat.replace(/ /g,"_")).fadeOut();
+							}
 						});
 						*/
 						
-						$('#timeline-list li').addClass('open')
-
-
-					}
+						$filters.removeClass('on');
+						$node.addClass('on');
+						$list.addClass('hidden');
+						$("#timeline-list ." + catID).removeClass('hidden');
+						
+					$showAll.addClass('on')
+					
 									
 
 				});
+				
+				
 
+				/*
 				$("#expandAll").click(function() {
 
 					if (expanded == True) {
@@ -622,6 +678,7 @@ content:'-'}
 					}
 
 				});
+				*/
 
 				$(".current").click(function(){
 
