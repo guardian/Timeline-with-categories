@@ -80,17 +80,17 @@ line-height:1rem;
 display:inline-block;
 font-family:'Guardian Agate Sans', georgia, serif}
 
-.nav-categories a {
+.nav-categories span {
 margin-right:1rem;
 cursor:pointer;
 position:relative;
 padding-left:1.25rem}
 
-.nav-categories a:hover,
-.nav-categories .on {
+.nav-categories span:hover,
+.nav-categories span.on {
 color:#000}
 
-.nav-categories a:before {
+.nav-categories span:before {
 content:'';
 position:absolute;
 left:0;
@@ -488,9 +488,16 @@ content:'-'}
 		var daysArr = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 		var monthsArr = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 		var catList = [];
+		var $nav = $('#nav');
+		var $footer = $('#footer');
+		var initialOffset;
 		var n;
 		
 		iframeMessenger.enableAutoResize();
+
+		iframeMessenger.getPositionInformation(function(data) {
+			initialOffset = data['iframeTop'];
+		});
 						
 		function cleanStr(str){
 			return str.replace(/ /g,"_").toLowerCase();
@@ -502,8 +509,6 @@ content:'-'}
 
 			var key = getParameter( "key");
     		var url = "http://interactive.guim.co.uk/docsdata/" + key + ".json";
-
-    		//console.log(key,url);
 
     		$.getJSON(url, function(data){
 
@@ -539,11 +544,11 @@ content:'-'}
 				
 					var catCleaned = cleanStr(cat);
 
-					menuStr += '<li class="category cat'+i+'"><a data-cat="' +
+					menuStr += '<li class="category cat'+i+'" data-cat="' +
 						catCleaned +
-						'">' +
+						'"><span>' +
 						cat +
-						'</li>';
+						'</span></li>';
 						
 					selectStr += '<option data-cat="'+catCleaned+'">'+cat+'</option>'
 
@@ -620,31 +625,12 @@ content:'-'}
 					$(this).parents('li').toggleClass('open');
 				
 				});
-				
-				
-				/*
-				$(".incident h2").click(function() {
 
-					var currInc = $(this).attr('data-incident');
-			
-					if ($("#" + currInc + " .details").is(':visible')) {
-						$("#" + currInc + " .details").slideUp();
-						$("#" + currInc + " h2").css("background-image", "url(img/down.png)"); 
-					}
-
-					else if ($("#" + currInc + " .details").is(':hidden')) {
-						$("#" + currInc + " .details").slideDown();
-						$("#" + currInc + " h2").css("background-image", "url(img/up.png)"); 
-					}
-					
-			    });
-			    */
 			    
-			    var $filters = $(".category a");
+			    var $filters = $(".category");
 			    var $list = $('#timeline-list li');
 			    var $reset = $('.reset');
 			    var $expandAll = $('.expand a');
-			    
 				
 				// TOGGLE ALL EVENTS DESC
 			    $expandAll.click(function(){
@@ -676,15 +662,17 @@ content:'-'}
 			    
 			    function filterBy(catID){
 
-					iframeMessenger.scrollTo(0,initialOffset);
-					$('#nav').animate({top:0}, 100);
-
 					$list.addClass('hidden');
 					$("#timeline-list ." + catID).removeClass('hidden').last().addClass('end');
-					$reset.addClass('on')
+					$reset.addClass('on');
+					
+					if ($nav.position().top > 0){
+						
+						iframeMessenger.scrollTo(0,initialOffset)
+						
+					}
 			    
 			    }
-
 				
 			    $filters.click(function(){
 			    
@@ -751,26 +739,36 @@ content:'-'}
 			    var initialOffset;
 
 				iframeMessenger.getPositionInformation(function(data) {
-							initialOffset = data['iframeTop'];
-						});
+					initialOffset = data['iframeTop'];
+				});
 
 				if (window!=window.top) { 
 				
 					setInterval(function(){
 
-						iframeMessenger.getPositionInformation(function(data) {
-							var endPoint = $("#footer").position().top
-					        //console.log("pageYOffSet", data['pageYOffset'], "iframeTop", data['iframeTop'], "innerHeight", data['innerHeight']);
-					        if (data['iframeTop'] < 0 && data['iframeTop'] > (-1*(endPoint-70))) {
+						iframeMessenger.getPositionInformation(function(data){
+						
+								var endPoint = $footer.position().top
+							
+								//console.log(endPoint);
+								
+								//console.log(data['iframeTop'])
+								//console.log($nav.position().top)
+							
+								//console.log("pageYOffSet", data['pageYOffset'], "iframeTop", data['iframeTop'], "innerHeight", data['innerHeight']);
+							
+							
+								if (data['iframeTop'] < 0 && data['iframeTop'] > (-1*(endPoint-70))) {
 
-					        	$('#nav').animate({top: -1*data['iframeTop'] + 'px'}, 100)
+									$nav.animate({top: -1*data['iframeTop'] + 'px'}, 50)
 	
-					        }
+								}
 
-					        else if (data['iframeTop'] > 0) {
-					        	$('#nav').animate({top: 0}, 100)
+								else if (data['iframeTop'] > 0) {
+									$nav.animate({top: 0}, 50)
 
-					        }
+								}
+
 					    });
 
 					}, 100);
