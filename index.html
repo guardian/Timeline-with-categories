@@ -46,7 +46,6 @@ color:#333}
 #timeline {
 position:relative;
 font-size:.8rem;
-max-width:1200px;
 margin:0 auto}
 
 #nav {
@@ -54,6 +53,7 @@ position:absolute;
 top:0;
 left:0;
 right:0;
+min-height:1rem;
 background:#fff;
 padding:10px 0; 
 border-bottom:2px solid #000;
@@ -64,22 +64,21 @@ position:relative;
 margin-left:240px;
 color:#767676;
 font-size:.8125rem;
+line-height:1rem;
 font-family:'Guardian Text Sans Web', georgia, serif}
 
 .nav-categories:before {
 content:'Filter By:';
 display:inline-block;
-margin-right:.5rem;
+margin-right:.75rem;
 color:#333;
 font-weight:bold}
 
 .nav-categories ul,
 .nav-categories li {
 line-height:1rem;
-display:inline-block}
-
-.nav-categories li:first-child {
-display:none}
+display:inline-block;
+font-family:'Guardian Agate Sans', georgia, serif}
 
 .nav-categories a {
 margin-right:1rem;
@@ -95,11 +94,19 @@ color:#000}
 content:'';
 position:absolute;
 left:0;
-top:-2px;
-width:1rem;
-height:1rem;
+top:-1px;
+width:15px;
+height:15px;
 border-radius:50%;
 margin-right:4px}
+
+#dropdown {
+display:none;
+vertical-align:middle}
+
+option {
+font-family:inherit;
+font-size:13px}
 
 .nav-buttons {
 position:absolute;
@@ -109,10 +116,10 @@ top:6px}
 .nav-buttons li {
 display:inline-block}
 
-.nav-buttons .show {
+.nav-buttons .reset {
 display:none}
 
-.nav-buttons .show.on {
+.nav-buttons .reset.on {
 display:inline-block}
 
 .nav-buttons .btn {
@@ -148,7 +155,7 @@ max-width:860px}
 #timeline-wrapper:before {
 content:'';
 position:absolute;
-left:1rem;
+left:.8125rem;
 top:0;
 bottom:0;
 border-left:1px solid #333;
@@ -164,15 +171,16 @@ padding:0 0 2.5rem 240px}
 #timeline-list li.hidden {
 display:none}
 
-#timeline-list li:last-child {
+#timeline-list li:last-child,
+#timeline-list li.end {
 background:#fff}
 
 .timeline-circle {
 position:absolute;
 top:0;
 left:0;
-width:32px;
-height:32px;
+width:1.625rem;
+height:1.625rem;
 border-radius:50%;
 transition:.25s ease}
 
@@ -182,36 +190,32 @@ background:#D7191C}
 
 .cat1 .timeline-circle,
 .cat1 :before {
-background:#EA6911}
+background:#005689}
 
 .cat2 .timeline-circle,
 .cat2 :before {
-background:#FDB914}
+background:#4CC6DD}
 
 .cat3 .timeline-circle,
 .cat3 :before {
-background:#80C18C}
+background:#9B9B9B}
 
 .cat4 .timeline-circle,
 .cat4 :before {
-background:#4CC6DD}
-
-.cat5 .timeline-circle,
-.cat5 :before {
-background:#9B9B9B}
+background:#FDB914}
 
 .timeline-date {
 line-height:1.25;
 position:absolute;
 top:0;
-left:2.5rem}
+left:2.25rem}
 
 .timeline-date span span {
 display:block;
 font-size:11px;
 color:#767676}
 
-.manusupdate {
+.note {
 display:block;
 font-size:10px;
 line-height:1;
@@ -231,6 +235,10 @@ font-size:20px}
 .event-type,
 .details {
 display:none}
+
+.details {
+opacity:0;
+transition:1s}
 
 .btn {
 color:#000;
@@ -290,7 +298,8 @@ color:#fff;
 transition:.25s ease}
 
 .open .details {
-display:block}
+display:block;
+opacity:1}
 
 .open .toggle:after {
 content:'-'}
@@ -299,7 +308,6 @@ content:'-'}
 
 	.nav-categories {
 	margin-left:0}
-
 	
 }
 
@@ -307,11 +315,33 @@ content:'-'}
 
 	#timeline-list li {
 	padding-left:190px}
-
 	
 }
 
-@media screen and (max-width:620px){ 
+@media screen and (max-width:680px){ 
+
+	#category-menu {
+	display:none}
+	
+	.nav-categories:before {
+	margin-right:.25rem}
+	
+	#dropdown {
+	display:inline-block}
+
+	/*
+	#category-menu,
+	#category-menu:before {
+	font-size:12px}
+	
+	.nav-categories a {
+	padding-left:16px}
+	
+	.nav-categories a:before {
+	width:12px;
+	height:12px;
+	top:0}
+	*/
 
 	#timeline-wrapper:before {
 	left:12px}
@@ -326,21 +356,25 @@ content:'-'}
 	left:2rem}
 
 	#timeline-list li {
-	padding-left:140px}
+	padding-left:160px}
 		
 	#timeline-list h2 {
-	padding-right:3rem}
-
+	padding-right:3rem;
+	font-size:18px}
 	
 }
 
 @media screen and (max-width:380px){ 
 
-	
 	.nav-buttons .expand,
 	.timeline-circle,
-	#timeline-wrapper:before {
+	#timeline-wrapper:before,
+	.nav-categories:before,
+	#category-menu {
 	display:none}
+	
+	#nav select {
+	display:block}
 	
 	#timeline-list li {
 	margin-bottom:3rem;
@@ -359,7 +393,7 @@ content:'-'}
 	color:#000;
 	display:inline}
 	
-	.manusupdate {
+	.note {
 	position:static;
     top:auto;
     margin:.25rem 0;
@@ -369,7 +403,7 @@ content:'-'}
 	border:0;
 	margin-bottom:1rem;
 	text-align:center;
-	padding:0}
+	padding:0 .25rem}
 	
 	.event-type {
 	text-transform:capitalize;
@@ -422,7 +456,7 @@ content:'-'}
 				
 				<div class="nav-buttons">
 					<ul id="buttons-menu">
-						<li class="show"><a class="btn">Reset</a></li>
+						<li class="reset"><a class="btn">Reset</a></li>
 						<li class="expand"><a class="btn" data-cat="expandall">Expand All</a></li>
 					</ul>
 				</div>
@@ -452,9 +486,15 @@ content:'-'}
 		<script>
 		
 		var daysArr = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-		var monthsArr = ['January','February','March','April','May','June','July','August','September','October','November','December']
+		var monthsArr = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+		var catList = [];
+		var n;
 		
 		iframeMessenger.enableAutoResize();
+						
+		function cleanStr(str){
+			return str.replace(/ /g,"_").toLowerCase();
+		}
 
 		function initTimeline() {
 
@@ -465,78 +505,92 @@ content:'-'}
 
     		//console.log(key,url);
 
-    		$.getJSON(url, function(data) {
+    		$.getJSON(url, function(data){
 
-		    dataset = data.sheets.Sheet1;
-		    buildTimeline(dataset);
+				dataset = data.sheets.Sheet1;
+				buildTimeline(dataset);
 
-    		});
+				});
 
     		}
 
     		function buildTimeline(data) {
 
-    			//console.log(data);
+    			n = data.length;
+    			
     			//Make list of categories
 
     			var catListTemp = d3.nest()
 						.key(function(d){ return d.category})
 						.entries(data);
 
-				var catList = [];			
-
 				catListTemp.forEach(function(d) {	
 					catList.push(d.key);
-				});		
+				});	
 
 				//console.log("catList",catList);
 
 				var $menu = $('#category-menu');
-				var menuStr = '<li class="current">Categories</li>';
+				var menuStr = '';
+				var selectStr = '<option>select one</option>';
+				//var menuStr = '<li class="current">Categories</li>';
 
 				catList.forEach(function(cat,i) {
+				
+					var catCleaned = cleanStr(cat);
 
 					menuStr += '<li class="category cat'+i+'"><a data-cat="' +
-						cat.replace(/ /g,"_") +
-						'" class="' +
-						cat.replace(/ /g,"_") +
+						catCleaned +
 						'">' +
 						cat +
 						'</li>';
+						
+					selectStr += '<option data-cat="'+catCleaned+'">'+cat+'</option>'
 
 				});
 
-				
-				$menu.html(menuStr);
+				$menu.html(menuStr).
+					parent().append('<select id="dropdown">'+selectStr+'</select>');
 
-    			for (var i = 0; i < data.length; i++) {
+				
+				var $dropdown = $('#dropdown');
+				
+				$dropdown.change(function(){
+	
+					var catID = $dropdown.find(':selected').data('cat');
+					filterBy(catID)
+
+				});
+					
+					
+				// GENERATE LIST, REVERSE ORDER
+				
+    			for (var i = n-1; i>-1; i--){
     			
     				var theEvent = data[i];
     				var currCat = theEvent['category'];
+    				var catCleaned = cleanStr(currCat);
     				var theDate = theEvent['date'];
     				var chunks = theDate.split('/');
-    				var theDay = chunks[0]*1;
-    				var theMonth = chunks[1]*1;
-    				var theYear = chunks[2]*1;
+    				var theDay = chunks[0];
+    				var theMonth = chunks[1];
+    				var theYear = chunks[2];
+    				var jsDateFormat = new Date(theYear+'-'+theMonth+'-'+theDay);
+    				var theDayofWeek = daysArr[jsDateFormat.getDay()];
     				var theMonth = monthsArr[theMonth-1];
-    				var jsDateFormat = new Date(theMonth+'-'+theDay+'-'+theYear);
-    				var theDayofWeek = daysArr[jsDateFormat.getDay()]
-
-    				//currCat = data[i]['category'];
-    				//console.log(catList.indexOf(currCat));
 
 					$('#timeline-list').append(
 						'<li class="incident ' 
-						+ currCat.replace(/ /g,"_") + ' cat' + catList.indexOf(currCat)
+						+ catCleaned + ' cat' + catList.indexOf(currCat)
 						+ '" id="timeline-entry' 
 						+ (i + 1) 
 						+ '"><time class="timeline-date" datetime="' 
 						+ theDate 
 						+ '"><span>' 
-						+ theDayofWeek+' '+theDay+' '+theMonth 
+						+ theDayofWeek+' '+(theDay*1)+' '+theMonth 
 						+ ' <span>'+theYear+'</span></span>' 
 						+ '</time>' 
-						+ '<div class="timeline-circle" title="'+currCat+'"></div><div class="timeline-entry"><span class="manusupdate">' 
+						+ '<div class="timeline-circle" title="'+currCat+'"></div><div class="timeline-entry"><span class="note">' 
 						+ data[i]['kicker'] 
 						+ '</span><h2 data-incident="timeline-entry' 
 						+ (i + 1) + '">' 
@@ -588,7 +642,7 @@ content:'-'}
 			    
 			    var $filters = $(".category a");
 			    var $list = $('#timeline-list li');
-			    var $showAll = $('.show');
+			    var $reset = $('.reset');
 			    var $expandAll = $('.expand a');
 			    
 				
@@ -609,47 +663,38 @@ content:'-'}
 			     	
 			    });
 			     
-			    // SHOW ALL EVENTS
-			    $showAll.click(function(){
+			    // RESET ALL EVENTS
+			    $reset.click(function(){
 			     
-			    	$list.removeClass('hidden');
-			    	$showAll.removeClass('on');
+			    	$list.removeClass('hidden').removeClass('end');
+			    	$reset.removeClass('on');
 			    	$filters.removeClass('on');
+			    	$dropdown.find('option').eq(0).prop('selected', true);
 			     
 			    });
+			    
+			    
+			    function filterBy(catID){
 
-				
+					iframeMessenger.scrollTo(0,initialOffset);
+					$('#nav').animate({top:0}, 100);
+
+					$list.addClass('hidden');
+					$("#timeline-list ." + catID).removeClass('hidden').last().addClass('end');
+					$reset.addClass('on')
+			    
+			    }
+
 				
 			    $filters.click(function(){
 			    
 			    	var $node = $(this);
 					var catID = $node.data('cat');
 					
-					//console.log(catID);
+					$filters.removeClass('on').removeClass('end');
+					$node.addClass('on');
 					
-					//if (catID != 'showall') {
-
-						iframeMessenger.scrollTo(0,initialOffset);
-						
-						$('#nav').animate({top:0}, 100);
-						
-						/*
-						catList.forEach(function(cat) {
-							if (cat.replace(/ /g,"_") != catID) {
-
-								$("#timeline-list ." + cat.replace(/ /g,"_")).fadeOut();
-							}
-						});
-						*/
-						
-						$filters.removeClass('on');
-						$node.addClass('on');
-						$list.addClass('hidden');
-						$("#timeline-list ." + catID).removeClass('hidden');
-						
-					$showAll.addClass('on')
-					
-									
+					filterBy(catID);
 
 				});
 				
@@ -678,7 +723,7 @@ content:'-'}
 					}
 
 				});
-				*/
+				
 
 				$(".current").click(function(){
 
@@ -696,9 +741,10 @@ content:'-'}
 						
 						}
 					}
-					
-					
+
 				});
+				
+				*/
 
 				//Sticky nav within iframe
 
@@ -714,7 +760,7 @@ content:'-'}
 
 						iframeMessenger.getPositionInformation(function(data) {
 							var endPoint = $("#footer").position().top
-					        console.log("pageYOffSet", data['pageYOffset'], "iframeTop", data['iframeTop'], "innerHeight", data['innerHeight']);
+					        //console.log("pageYOffSet", data['pageYOffset'], "iframeTop", data['iframeTop'], "innerHeight", data['innerHeight']);
 					        if (data['iframeTop'] < 0 && data['iframeTop'] > (-1*(endPoint-70))) {
 
 					        	$('#nav').animate({top: -1*data['iframeTop'] + 'px'}, 100)
@@ -722,15 +768,16 @@ content:'-'}
 					        }
 
 					        else if (data['iframeTop'] > 0) {
-					        	$('#nav').animate({top: '0px'}, 100)
+					        	$('#nav').animate({top: 0}, 100)
 
 					        }
 					    });
 
-					}, 200);
+					}, 100);
 
 				}
 				
+				/*
 				if( !/iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
 
 				$(window).resize(function() {
@@ -762,6 +809,7 @@ content:'-'}
 
 
 				}
+				*/
 
     	}
 
