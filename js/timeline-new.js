@@ -32,9 +32,9 @@ function initTimeline() {
 		dataset = data.sheets.Sheet1;
 		buildTimeline(dataset);
 
-		});
+	});
 
-	}
+}
 
 	function buildTimeline(data) {
 
@@ -50,11 +50,8 @@ function initTimeline() {
 			catList.push(d.key);
 		});	
 
-		//console.log("catList",catList);
-
 		var $menu = $('#category-menu');
 		var menuStr = '<li class="filter">Filter by</li>';
-		//var selectStr = '<option>select one</option>';
 
 		catList.forEach(function(cat,i) {
 		
@@ -65,25 +62,10 @@ function initTimeline() {
 				'"><span>' +
 				cat +
 				'</span></li>';
-				
-			//selectStr += '<option data-cat="'+catCleaned+'">'+cat+'</option>'
 
 		});
 
 		$menu.html(menuStr)
-		
-		//.parent().append('<select id="dropdown">'+selectStr+'</select>');
-
-		/*
-		var $dropdown = $('#dropdown');
-		
-		$dropdown.change(function(){
-
-			var catID = $dropdown.find(':selected').data('cat');
-			filterBy(catID)
-
-		});
-		*/
 		
 		$('.filter').click(function(){
 		
