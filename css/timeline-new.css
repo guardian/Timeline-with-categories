@@ -307,10 +307,32 @@ content:'-'}
 .loaded .timeline-main {
 background:none}
 
+@media screen and (max-width:1100px){ 
+
+	.nav-categories {
+	margin-left:160px}
+	
+	#timeline-list li {
+	padding-left:160px}
+	
+	.timeline-date {
+	width:100px}
+	
+}
+
 @media screen and (max-width:1000px){ 
 
 	.nav-categories {
 	margin-left:0}
+	
+	.timeline-date {
+	width:auto}
+	
+	#timeline-wrapper {
+	max-width:100%}
+	
+	#timeline-list li {
+	padding-left:200px}
 	
 }
 
