@@ -8,13 +8,17 @@ var n;
 
 iframeMessenger.enableAutoResize();
 
-iframeMessenger.getPositionInformation(function(data) {
-	initialOffset = data['iframeTop'];
-});
+function getFallBackOffset(){
+
+	iframeMessenger.getPositionInformation(function(data) {
+		initialOffset = data['iframeTop'];
+	});
+}
 				
 function cleanStr(str){
 	return str.replace(/ /g,"_").toLowerCase();
 }
+
 
 function initTimeline() {
 
@@ -85,8 +89,6 @@ function initTimeline() {
 		
 		var timelineStr = '';
 		
-		timeline
-		
 		for (var i = n-1; i>-1; i--){
 		
 			var theEvent = data[i];
@@ -101,7 +103,7 @@ function initTimeline() {
 			var theDayofWeek = daysArr[jsDateFormat.getDay()];
 			var theMonth = monthsArr[theMonth-1];
 
-			timelineStr += '<li class="incident ' 
+			timelineStr += '<li class="' 
 				+ catCleaned + ' cat' + catList.indexOf(currCat)
 				+ '" id="timeline-entry' 
 				+ (i + 1) 
@@ -141,7 +143,6 @@ function initTimeline() {
 		
 		});
 
-		
 		var $filters = $(".category");
 		var $list = $('#timeline-list li');
 		var $reset = $('.reset');
@@ -200,7 +201,6 @@ function initTimeline() {
 			filterBy(catID);
 
 		});
-		
 		
 
 		/*
@@ -264,14 +264,8 @@ function initTimeline() {
 				iframeMessenger.getPositionInformation(function(data){
 				
 						var endPoint = $footer.position().top
-					
-						//console.log(endPoint);
 						
-						//console.log(data['iframeTop'])
-						//console.log($nav.position().top)
-					
 						//console.log("pageYOffSet", data['pageYOffset'], "iframeTop", data['iframeTop'], "innerHeight", data['innerHeight']);
-					
 					
 						if (data['iframeTop'] < 0 && data['iframeTop'] > (-1*(endPoint-70))) {
 
@@ -342,4 +336,12 @@ function getParameter(paramName) {
   return null;
 }
 
+
+$(window).resize(function(){
+
+	getFallBackOffset();
+
+});
+
 initTimeline();
+getFallBackOffset();

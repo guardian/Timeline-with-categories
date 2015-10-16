@@ -80,7 +80,7 @@ position:relative;
 padding-left:1.25rem}
 
 .nav-categories span:hover,
-.nav-categories span.on {
+.nav-categories .on span {
 color:#000}
 
 .nav-categories span:before {
@@ -95,10 +95,11 @@ margin-right:4px}
 
 #dropdown {
 display:none;
-vertical-align:middle}
+vertical-align:middle;
+font-family:'Guardian Agate Sans', georgia, serif}
 
 option {
-font-family:inherit;
+font-family:'Guardian Agate Sans', georgia, serif;
 font-size:13px}
 
 .nav-buttons {
@@ -121,10 +122,6 @@ padding:0 .75rem}
 .nav-buttons .btn:hover {
 color:#fff;
 background:#000}
-
-p {
-font-family:'Guardian Text Sans Web', georgia, serif;
-color:#767676}
 
 ul,
 li {
@@ -222,7 +219,7 @@ color:#D7191C;
 position:absolute;
 top:-1rem}
 
-.incident h2 {
+li h2 {
 margin:0;
 padding-bottom:.5rem;
 border-bottom:1px solid #DEDEDE;
@@ -237,8 +234,11 @@ font-size:1.125rem}
 display:none}
 
 .details {
-opacity:0;
-transition:1s}
+opacity:0}
+
+li p {
+font-family:'Guardian Text Sans Web', georgia, serif;
+color:#767676}
 
 .btn {
 color:#000;
