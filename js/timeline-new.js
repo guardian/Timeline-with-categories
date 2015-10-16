@@ -53,9 +53,8 @@ function initTimeline() {
 		//console.log("catList",catList);
 
 		var $menu = $('#category-menu');
-		var menuStr = '';
-		var selectStr = '<option>select one</option>';
-		//var menuStr = '<li class="current">Categories</li>';
+		var menuStr = '<li class="filter">Filter by</li>';
+		//var selectStr = '<option>select one</option>';
 
 		catList.forEach(function(cat,i) {
 		
@@ -67,14 +66,15 @@ function initTimeline() {
 				cat +
 				'</span></li>';
 				
-			selectStr += '<option data-cat="'+catCleaned+'">'+cat+'</option>'
+			//selectStr += '<option data-cat="'+catCleaned+'">'+cat+'</option>'
 
 		});
 
-		$menu.html(menuStr).
-			parent().append('<select id="dropdown">'+selectStr+'</select>');
-
+		$menu.html(menuStr)
 		
+		//.parent().append('<select id="dropdown">'+selectStr+'</select>');
+
+		/*
 		var $dropdown = $('#dropdown');
 		
 		$dropdown.change(function(){
@@ -82,6 +82,20 @@ function initTimeline() {
 			var catID = $dropdown.find(':selected').data('cat');
 			filterBy(catID)
 
+		});
+		*/
+		
+		$('.filter').click(function(){
+		
+			var w = $(document).width();
+			var $node = $(this);
+			
+			if (w<681){
+				
+				$node.parent().toggleClass('open');
+			
+			}
+		
 		});
 			
 			
@@ -181,6 +195,7 @@ function initTimeline() {
 			$list.addClass('hidden');
 			$("#timeline-list ." + catID).removeClass('hidden').last().addClass('end');
 			$reset.addClass('on');
+			$menu.removeClass('open');
 			
 			if ($nav.position().top > 0){
 				
@@ -203,59 +218,7 @@ function initTimeline() {
 		});
 		
 
-		/*
-		$("#expandAll").click(function() {
-
-			if (expanded == True) {
-			$(".details").slideDown();
-			$("#expandAll").removeClass("glyphicon-plus-sign");
-			$("#expandAll").addClass("glyphicon-minus-sign");
-
-			expanded = "yes";
-			$("#timeline-list h2").css("background-image", "url(img/up.png)"); 
-
-			}
-
-			else if (expanded == "yes") {
-				$(".details").slideUp();
-				$("#expandAll").addClass("glyphicon-plus-sign");
-				$("#expandAll").removeClass("glyphicon-minus-sign");
-				expanded = "no";
-				$("#timeline-list h2").css("background-image", "url(img/down.png)"); 
-
-			}
-
-		});
-		
-
-		$(".current").click(function(){
-
-			getW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-
-			if ($(".category").is(':visible')) {
-				$(".category").hide();
-			}
-
-			else if ($(".category").is(':hidden')) {
-				$(".category").show();
-				if (getW > 601) {
-
-				$(".nav-categories li").css("display", "inline-block");
-				
-				}
-			}
-
-		});
-		
-		*/
-
 		//Sticky nav within iframe
-
-		var initialOffset;
-
-		iframeMessenger.getPositionInformation(function(data) {
-			initialOffset = data['iframeTop'];
-		});
 
 		if (window!=window.top) { 
 		
@@ -283,40 +246,6 @@ function initTimeline() {
 			}, 100);
 
 		}
-		
-		/*
-		if( !/iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
-
-		$(window).resize(function() {
-
-		getW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-
-		if (getW > 601) {
-
-			if ($(".category").is(':hidden')) {
-				$(".category").show();
-				$(".nav-categories li").css("display", "inline-block");
-			}
-		 
-		}
-
-
-		if (getW < 600) {
-
-			$(".nav-categories li").css("display", "block");
-
-			if ($(".category").is(':visible')) {
-				$(".category").hide();
-				
-			}
-
-		}
-
-		});
-
-
-		}
-		*/
 
 }
 
