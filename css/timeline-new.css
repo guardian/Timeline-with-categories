@@ -1,27 +1,6 @@
-@font-face {
-font-family:'Guardian Egyptian Web'; src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Regular.eot');src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Regular.eot?#iefix') format('embedded-opentype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Regular.woff2') format('woff2'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Regular.woff') format('woff'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Regular.ttf') format('truetype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Regular.svg#GuardianEgyptianWeb-Regular') format('svg');font-weight:400;font-style:normal;font-stretch:normal}
-
-@font-face {
-font-family:'Guardian Egyptian Web'; src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Medium.eot');src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Medium.eot?#iefix') format('embedded-opentype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Medium.woff2') format('woff2'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Medium.woff') format('woff'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Medium.ttf') format('truetype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Medium.svg#GuardianEgyptianWeb-Medium') format('svg');font-weight:500;font-style:normal;font-stretch:normal}
-
-@font-face {
-font-family:'Guardian Egyptian Web'; src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Semibold.eot');src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Semibold.eot?#iefix') format('embedded-opentype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Semibold.woff2') format('woff2'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Semibold.woff') format('woff'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Semibold.ttf') format('truetype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianEgyptianWeb/GuardianEgyptianWeb-Semibold.svg#GuardianEgyptianWeb-Semibold') format('svg');font-weight:900;font-style:normal;font-stretch:normal}
-
-@font-face {
-font-family:'Guardian Text Sans Web';
-src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianTextSansWeb/GuardianTextSansWeb-Regular.eot');src:url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianTextSansWeb/GuardianTextSansWeb-Regular.eot?#iefix') format('embedded-opentype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianTextSansWeb/GuardianTextSansWeb-Regular.woff2') format('woff2'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianTextSansWeb/GuardianTextSansWeb-Regular.woff') format('woff'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianTextSansWeb/GuardianTextSansWeb-Regular.ttf') format('truetype'),url('//pasteup.guim.co.uk/fonts/0.1.0/hinting-on/kerning-on/original/GuardianTextSansWeb/GuardianTextSansWeb-Regular.svg#GuardianTextSansWeb-Regular') format('svg');font-weight:400;font-style:normal;font-stretch:normal}
-
-@font-face {
-font-family:'Guardian Agate Sans';
-src:url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Reg.eot');src:url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Reg.eot?#iefix') format('embedded-opentype'),url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Reg.woff') format('woff'),url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Reg.ttf') format('truetype'),url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Reg.svg#Guardian-Text-Egyp-Web-Reg') format('svg');font-weight:normal;font-style:normal;font-stretch:normal}
-
-@font-face {
-font-family:'Guardian Agate Sans';
-src:url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Bold.eot');src:url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Bold.eot?#iefix') format('embedded-opentype'),url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Bold.woff') format('woff'),url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Bold.ttf') format('truetype'),url('http://pasteup.guim.co.uk/fonts/latin1/Guardian-Ag-Sans-1-Web-Bold.svg#Guardian-Text-Egyp-Web-Medium') format('svg');font-weight:bold;font-style:normal;font-stretch:normal}
-
 html {
 -webkit-font-smoothing:antialiased;
-font-family:'Guardian Egyptian Web', georgia, serif;
+font-family:'Guardian Egyptian Text', georgia, serif;
 -webkit-box-sizing:border-box; 
 -moz-box-sizing: border-box;
 box-sizing:border-box}
@@ -78,7 +57,7 @@ content:':'}
 margin-right:1rem;
 cursor:pointer;
 position:relative;
-padding-left:1.25rem}
+padding-left:1.1rem}
 
 .nav-categories li:hover span,
 .nav-categories li.on span {
@@ -88,11 +67,10 @@ color:#000}
 content:'';
 position:absolute;
 left:0;
-top:-1px;
-width:15px;
-height:15px;
-border-radius:50%;
-margin-right:4px}
+top:0;
+width:12px;
+height:12px;
+border-radius:50%}
 
 .nav-categories em {
 font-style:normal}
@@ -199,6 +177,7 @@ background:#80C18C}
 line-height:1.25;
 position:absolute;
 top:0;
+font-family:'Guardian Agate Sans', georgia, serif;
 left:2.25rem}
 
 .timeline-date span span {
@@ -221,7 +200,8 @@ border-bottom:1px solid #DEDEDE;
 cursor:pointer;
 padding-right:5rem;
 line-height:1.25;
-font-weight:900;
+font-family:'Guardian Egyptian Headline', 'Guardian Egyptian Text', georgia, serif; 
+font-weight:600;
 font-size:1.125rem}
 
 .event-type,
@@ -232,7 +212,7 @@ display:none}
 opacity:0}
 
 li p {
-font-family:'Guardian Text Sans Web', georgia, serif;
+font-family:'Guardian Agate Sans', georgia, serif;
 color:#767676}
 
 .btn {
@@ -269,7 +249,7 @@ background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.
 
 .toggle {
 position:absolute;
-top:0;
+top:-2px;
 right:0;
 width:1.5rem;
 height:1.5rem;
@@ -396,7 +376,7 @@ background:none}
     transform:rotate(0deg)}
     
     .nav-categories span:before {
-    top:-2px}
+    top:-1px}
 	
 	.nav-categories:before {
 	margin-right:.25rem}
