@@ -94,11 +94,11 @@ function initTimeline() {
 		});
 		
 			
-		// GENERATE LIST, REVERSE ORDER
+		// GENERATE LIST
 		
 		var timelineStr = '';
 		
-		for (var i = n-1; i>-1; i--){
+		for (var i = 0; i<n; i++){
 		
 			var theEvent = data[i];
 			var currCat = theEvent['category'];
