@@ -79,7 +79,7 @@ function initTimeline() {
 			}
 		
 		});
-			
+		
 			
 		// GENERATE LIST, REVERSE ORDER
 		
