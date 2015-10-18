@@ -94,17 +94,6 @@ height:15px;
 border-radius:50%;
 margin-right:4px}
 
-/*
-#dropdown {
-display:none;
-vertical-align:middle;
-font-family:'Guardian Agate Sans', georgia, serif}
-
-option {
-font-family:'Guardian Agate Sans', georgia, serif;
-font-size:13px}
-*/
-
 .nav-buttons {
 position:absolute;
 right:0;
@@ -491,6 +480,5 @@ background:none}
 	height:2rem;
 	line-height:2rem;
 	margin:0 0 -1rem -1rem}
-
 	
 }

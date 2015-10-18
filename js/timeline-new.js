@@ -13,6 +13,7 @@ function getFallBackOffset(){
 	iframeMessenger.getPositionInformation(function(data) {
 		initialOffset = data['iframeTop'];
 	});
+	
 }
 				
 function cleanStr(str){
@@ -42,25 +43,27 @@ function initTimeline() {
 		
 		//Make list of categories
 
-		var catListTemp = d3.nest()
-				.key(function(d){ return d.category})
-				.entries(data);
-
-		catListTemp.forEach(function(d) {	
-			catList.push(d.key);
-		});	
-
 		var $menu = $('#category-menu');
 		var menuStr = '<li class="filter">Filter by</li>';
-
-		catList.forEach(function(cat,i) {
 		
-			var catCleaned = cleanStr(cat);
+		// GET CATEGORIES
+		
+		$.each(data, function(i,val) {
+		  	var category = val['category'];
+		  	
+		  	if (catList.indexOf(category) < 0){
+				catList.push(category);
+			}
+		});
+
+		$.each(catList, function(i,val) {
+		
+			var catCleaned = cleanStr(val);
 
 			menuStr += '<li class="category cat'+i+'" data-cat="' +
 				catCleaned +
 				'"><span>' +
-				cat +
+				val +
 				'</span></li>';
 
 		});
@@ -97,7 +100,7 @@ function initTimeline() {
 			var theYear = chunks[2];
 			var jsDateFormat = new Date(theYear+'-'+theMonth+'-'+theDay);
 			var theDayofWeek = daysArr[jsDateFormat.getDay()];
-			var theMonth = monthsArr[theMonth-1];
+			var theMonth = monthsArr[theMonth-1];			
 
 			timelineStr += '<li class="' 
 				+ catCleaned + ' cat' + catList.indexOf(currCat)
@@ -167,7 +170,6 @@ function initTimeline() {
 			$list.removeClass('hidden').removeClass('end');
 			$reset.removeClass('on');
 			$filters.removeClass('on');
-			$dropdown.find('option').eq(0).prop('selected', true);
 		 
 		});
 		
