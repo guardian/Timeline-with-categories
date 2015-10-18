@@ -3,6 +3,7 @@ var monthsArr = ['January','February','March','April','May','June','July','Augus
 var catList = [];
 var catListCount = [];
 var $nav = $('#nav');
+var $count = $('#count span');
 var $footer = $('#footer');
 var initialOffset;
 var n;
@@ -67,12 +68,13 @@ function initTimeline() {
 		$.each(catList, function(i,val) {
 		
 			var catCleaned = cleanStr(val);
+			var n = catListCount[i];
 
 			menuStr += '<li class="category cat'+i+'" data-cat="' +
 				catCleaned +
-				'"><span>' +
+				'" data-count="'+n+'"><span>' +
 				val +
-				' <em>('+catListCount[i]+')</em></span></li>';
+				' <em>('+n+')</em></span></li>';
 
 		});
 
@@ -141,6 +143,7 @@ function initTimeline() {
 		}
 
 		$('#timeline').addClass('loaded');
+		$count.html(n);
 		$('#timeline-list').html(timelineStr);
 		
 		// TOGGLE
@@ -201,10 +204,11 @@ function initTimeline() {
 		
 			var $node = $(this);
 			var catID = $node.data('cat');
+			var n = $node.data('count');
 			
 			$filters.removeClass('on').removeClass('end');
 			$node.addClass('on');
-			
+			$count.html(n);
 			filterBy(catID);
 
 		});
@@ -224,12 +228,12 @@ function initTimeline() {
 					
 						if (data['iframeTop'] < 0 && data['iframeTop'] > (-1*(endPoint-70))) {
 
-							$nav.animate({top: -1*data['iframeTop'] + 'px'}, 50)
+							$nav.css({top: -1*data['iframeTop'] + 'px'})
 
 						}
 
 						else if (data['iframeTop'] > 0) {
-							$nav.animate({top: 0}, 50)
+							$nav.css({top: 0})
 
 						}
 
