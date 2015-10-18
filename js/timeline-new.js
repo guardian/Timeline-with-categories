@@ -1,6 +1,7 @@
 var daysArr = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 var monthsArr = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var catList = [];
+var catListCount = [];
 var $nav = $('#nav');
 var $footer = $('#footer');
 var initialOffset;
@@ -49,11 +50,18 @@ function initTimeline() {
 		// GET CATEGORIES
 		
 		$.each(data, function(i,val) {
+		
 		  	var category = val['category'];
+		  	var index = catList.indexOf(category);
 		  	
-		  	if (catList.indexOf(category) < 0){
+		  	if (index < 0){
 				catList.push(category);
+				catListCount.push(1);
 			}
+			else {
+				catListCount[index]++;
+			}
+			
 		});
 
 		$.each(catList, function(i,val) {
@@ -64,7 +72,7 @@ function initTimeline() {
 				catCleaned +
 				'"><span>' +
 				val +
-				'</span></li>';
+				' <em>('+catListCount[i]+')</em></span></li>';
 
 		});
 

@@ -94,6 +94,9 @@ height:15px;
 border-radius:50%;
 margin-right:4px}
 
+.nav-categories em {
+font-style:normal}
+
 .nav-buttons {
 position:absolute;
 right:0;
@@ -332,6 +335,9 @@ background:none}
 
 	#timeline-list li {
 	padding-left:190px}
+	
+	.nav-categories em {
+	display:none}
 	
 }
 
