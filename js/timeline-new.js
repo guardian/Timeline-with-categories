@@ -1,7 +1,9 @@
 var daysArr = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 var monthsArr = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 var catList = [];
+var catListCount = [];
 var $nav = $('#nav');
+var $count = $('#count span');
 var $footer = $('#footer');
 var initialOffset;
 var n;
@@ -13,6 +15,7 @@ function getFallBackOffset(){
 	iframeMessenger.getPositionInformation(function(data) {
 		initialOffset = data['iframeTop'];
 	});
+	
 }
 				
 function cleanStr(str){
@@ -42,26 +45,36 @@ function initTimeline() {
 		
 		//Make list of categories
 
-		var catListTemp = d3.nest()
-				.key(function(d){ return d.category})
-				.entries(data);
-
-		catListTemp.forEach(function(d) {	
-			catList.push(d.key);
-		});	
-
 		var $menu = $('#category-menu');
 		var menuStr = '<li class="filter">Filter by</li>';
-
-		catList.forEach(function(cat,i) {
 		
-			var catCleaned = cleanStr(cat);
+		// GET CATEGORIES
+		
+		$.each(data, function(i,val) {
+		
+		  	var category = val['category'];
+		  	var index = catList.indexOf(category);
+		  	
+		  	if (index < 0){
+				catList.push(category);
+				catListCount.push(1);
+			}
+			else {
+				catListCount[index]++;
+			}
+			
+		});
+
+		$.each(catList, function(i,val) {
+		
+			var catCleaned = cleanStr(val);
+			var n = catListCount[i];
 
 			menuStr += '<li class="category cat'+i+'" data-cat="' +
 				catCleaned +
-				'"><span>' +
-				cat +
-				'</span></li>';
+				'" data-count="'+n+'"><span>' +
+				val +
+				' <em>('+n+')</em></span></li>';
 
 		});
 
@@ -97,7 +110,7 @@ function initTimeline() {
 			var theYear = chunks[2];
 			var jsDateFormat = new Date(theYear+'-'+theMonth+'-'+theDay);
 			var theDayofWeek = daysArr[jsDateFormat.getDay()];
-			var theMonth = monthsArr[theMonth-1];
+			var theMonth = monthsArr[theMonth-1];			
 
 			timelineStr += '<li class="' 
 				+ catCleaned + ' cat' + catList.indexOf(currCat)
@@ -130,6 +143,7 @@ function initTimeline() {
 		}
 
 		$('#timeline').addClass('loaded');
+		$count.html(n);
 		$('#timeline-list').html(timelineStr);
 		
 		// TOGGLE
@@ -167,7 +181,7 @@ function initTimeline() {
 			$list.removeClass('hidden').removeClass('end');
 			$reset.removeClass('on');
 			$filters.removeClass('on');
-			$dropdown.find('option').eq(0).prop('selected', true);
+			$count.html(n);
 		 
 		});
 		
@@ -191,10 +205,11 @@ function initTimeline() {
 		
 			var $node = $(this);
 			var catID = $node.data('cat');
+			var n = $node.data('count');
 			
 			$filters.removeClass('on').removeClass('end');
 			$node.addClass('on');
-			
+			$count.html(n);
 			filterBy(catID);
 
 		});
@@ -214,12 +229,12 @@ function initTimeline() {
 					
 						if (data['iframeTop'] < 0 && data['iframeTop'] > (-1*(endPoint-70))) {
 
-							$nav.animate({top: -1*data['iframeTop'] + 'px'}, 50)
+							$nav.css({top: -1*data['iframeTop'] + 'px'})
 
 						}
 
 						else if (data['iframeTop'] > 0) {
-							$nav.animate({top: 0}, 50)
+							$nav.css({top: 0})
 
 						}
 
