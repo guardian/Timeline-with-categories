@@ -181,6 +181,7 @@ function initTimeline() {
 			$list.removeClass('hidden').removeClass('end');
 			$reset.removeClass('on');
 			$filters.removeClass('on');
+			$count.html(n);
 		 
 		});
 		
