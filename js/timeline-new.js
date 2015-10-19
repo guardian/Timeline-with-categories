@@ -106,43 +106,48 @@ function initTimeline() {
 		
 			var theEvent = data[i];
 			var currCat = theEvent['category'];
-			var catCleaned = cleanStr(currCat);
-			var theDate = theEvent['date'];
-			var chunks = theDate.split('/');
-			var theDay = chunks[0];
-			var theMonth = chunks[1];
-			var theYear = chunks[2];
-			var jsDateFormat = new Date(theYear+'-'+theMonth+'-'+theDay);
-			var theDayofWeek = daysArr[jsDateFormat.getDay()];
-			var theMonth = monthsArr[theMonth-1];			
+			
+			if (currCat!=''){
+			
+				var catCleaned = cleanStr(currCat);
+				var theDate = theEvent['date'];
+				var chunks = theDate.split('/');
+				var theDay = chunks[0];
+				var theMonth = chunks[1];
+				var theYear = chunks[2];
+				var jsDateFormat = new Date(theYear+'-'+theMonth+'-'+theDay);
+				var theDayofWeek = daysArr[jsDateFormat.getDay()];
+				var theMonth = monthsArr[theMonth-1];			
 
-			timelineStr += '<li class="' 
-				+ catCleaned + ' cat' + catList.indexOf(currCat)
-				+ '" id="timeline-entry' 
-				+ (i + 1) 
-				+ '"><time class="timeline-date" datetime="' 
-				+ theDate 
-				+ '"><span>' 
-				+ theDayofWeek+' '+(theDay*1)+' '+theMonth 
-				+ ' <span>'+theYear+'</span></span>' 
-				+ '</time>' 
-				+ '<div class="timeline-circle" title="'+currCat+'"></div><div class="timeline-entry"><span class="note">' 
-				+ data[i]['kicker'] 
-				+ '</span><h2 data-incident="timeline-entry' 
-				+ (i + 1) + '">' 
-				+ data[i]['title'] 
-				+ '</h2>'
-				+ '<p class="event-type">'+currCat+'</p>'
-				+ '<div class="details"><p>' 
-				+ data[i]['text'] 
-				+ '</p><p class="update">'
-				+ '<a class="btn" href="' 
-				+ data[i]['link'] 
-				+ '" target="_blank">' 
-				+ data[i]['source'] 
-				+ '</a>'
-				+ '</p></div></div>'
-				+ '<a class="toggle"></a></li>'
+				timelineStr += '<li class="' 
+					+ catCleaned + ' cat' + catList.indexOf(currCat)
+					+ '" id="timeline-entry' 
+					+ (i + 1) 
+					+ '"><time class="timeline-date" datetime="' 
+					+ theDate 
+					+ '"><span>' 
+					+ theDayofWeek+' '+(theDay*1)+' '+theMonth 
+					+ ' <span>'+theYear+'</span></span>' 
+					+ '</time>' 
+					+ '<div class="timeline-circle" title="'+currCat+'"></div><div class="timeline-entry"><span class="note">' 
+					+ data[i]['kicker'] 
+					+ '</span><h2 data-incident="timeline-entry' 
+					+ (i + 1) + '">' 
+					+ data[i]['title'] 
+					+ '</h2>'
+					+ '<p class="event-type">'+currCat+'</p>'
+					+ '<div class="details"><p>' 
+					+ data[i]['text'] 
+					+ '</p><p class="update">'
+					+ '<a class="btn" href="' 
+					+ data[i]['link'] 
+					+ '" target="_blank">' 
+					+ data[i]['source'] 
+					+ '</a>'
+					+ '</p></div></div>'
+					+ '<a class="toggle"></a></li>'
+				
+			}
 
 		}
 
