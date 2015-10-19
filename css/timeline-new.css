@@ -199,11 +199,12 @@ color:#767676}
 
 .note {
 display:block;
-font-size:10px;
+font-size:9px;
 line-height:1;
 color:#D7191C;
 position:absolute;
-top:-1rem}
+text-transform:uppercase;
+top:-12px}
 
 li h2 {
 margin:0;
