@@ -53,14 +53,18 @@ function initTimeline() {
 		$.each(data, function(i,val) {
 		
 		  	var category = val['category'];
-		  	var index = catList.indexOf(category);
 		  	
-		  	if (index < 0){
-				catList.push(category);
-				catListCount.push(1);
-			}
-			else {
-				catListCount[index]++;
+		  	if (category!=''){
+		  	
+				var index = catList.indexOf(category);
+			
+				if (index < 0){
+					catList.push(category);
+					catListCount.push(1);
+				}
+				else {
+					catListCount[index]++;
+				}
 			}
 			
 		});
