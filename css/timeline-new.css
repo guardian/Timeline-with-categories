@@ -78,7 +78,9 @@ font-style:normal}
 .nav-buttons {
 position:absolute;
 right:0;
-top:6px}
+top:6px;
+font-size:12px;
+font-family:'Guardian Agate Sans', georgia, serif}
 
 .nav-buttons li {
 display:inline-block}
@@ -234,6 +236,7 @@ border-radius:.75rem;
 font-size:11px;
 line-height:1.5rem;
 border:1px solid #000;
+background:#fff;
 transition:.25s ease}
 
 .update a {
@@ -314,7 +317,14 @@ background:none}
 	display:none}
 
 	.nav-categories {
-	margin-left:0}
+	margin-left:0;
+	font-size:12px}
+	
+	.nav-categories span {
+	margin-right:.5rem}
+	
+	.nav-buttons .btn {
+    font-size:11px}
 	
 	.timeline-date {
 	width:auto}
