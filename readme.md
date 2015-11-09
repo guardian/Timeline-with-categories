@@ -8,6 +8,6 @@ Add the spreadsheet to the Guardian docs manager: [https://visuals.gutools.co.uk
 
 Add the spreadsheet key to the end of this URL - http://interactive.guim.co.uk/embed/aus/2015/oct/new-timeline/index.html?key=
 
-eg. [http://localhost:8000/2015/oct/new-timeline/index.html?key=137nry7FMtHLOGN3S0SvhCMKH9crGJWKEwDUpS6qPaew](http://localhost:8000/2015/oct/new-timeline/index.html?key=137nry7FMtHLOGN3S0SvhCMKH9crGJWKEwDUpS6qPaew)
+eg. [http://interactive.guim.co.uk/embed/aus/2015/oct/new-timeline/index.html?key=137nry7FMtHLOGN3S0SvhCMKH9crGJWKEwDUpS6qPaew](http://interactive.guim.co.uk/embed/aus/2015/oct/new-timeline/index.html?key=137nry7FMtHLOGN3S0SvhCMKH9crGJWKEwDUpS6qPaew)
 
 This URL can now be embedded in composer.
