@@ -34,7 +34,8 @@ function initTimeline() {
 	$.getJSON(url, function(data){
 
 		dataset = data.sheets.Sheet1;
-		buildTimeline(dataset);
+		settings = data.sheets.Sheet2;
+		buildTimeline(dataset,settings);
 
 	});
 
@@ -43,7 +44,7 @@ function initTimeline() {
 	function buildTimeline(data) {
 
 		n = data.length;
-		
+	
 		//Make list of categories
 
 		var $menu = $('#category-menu');
@@ -106,28 +107,22 @@ function initTimeline() {
 		var timelineStr = '';
 		
 		for (var i = 0; i<n; i++){
-		
+
 			var theEvent = cleanData[i];
 			var currCat = theEvent['category'];
 			var catCleaned = cleanStr(currCat);
-			var theDate = theEvent['date'];
-			var chunks = theDate.split('/');
-			var theDay = chunks[0];
-			var theMonth = chunks[1];
-			var theYear = chunks[2];
-			var jsDateFormat = new Date(theYear+'-'+theMonth+'-'+theDay);
-			var theDayofWeek = daysArr[jsDateFormat.getDay()];
-			var theMonth = monthsArr[theMonth-1];			
+
+			var dateTimeString = moment(theEvent['date'] + theEvent['time'], "D-MMMM-YYYY HH:MM");		
 
 			timelineStr += '<li class="' 
 				+ catCleaned + ' cat' + catList.indexOf(currCat)
 				+ '" id="timeline-entry' 
 				+ (i + 1) 
 				+ '"><time class="timeline-date" datetime="' 
-				+ theDate 
+				+ dateTimeString
 				+ '"><span>' 
-				+ theDayofWeek+' '+(theDay*1)+' '+theMonth 
-				+ ' <span>'+theYear+'</span></span>' 
+				+ theEvent['date']
+				+ ' <span>'+theEvent['time']+'</span></span>' 
 				+ '</time>' 
 				+ '<div class="timeline-circle" title="'+currCat+'"></div><div class="timeline-entry"><span class="note">' 
 				+ data[i]['kicker'] 
